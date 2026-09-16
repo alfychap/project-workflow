@@ -58,8 +58,8 @@ Next implementation sequence:
 2. Finish/validate `skills/usage-gauge/SKILL.md` and `skills/usage-gauge/references/measurement.md`.
 3. Refine Prompt Cleanup and Project Structure against the accepted boundaries.
 4. Refine Project Status so it stays evidence-based and visual-first.
-5. Create `templates/project-workflow-dashboard.html` by generalizing the recovered Alfydd dashboard example, not by hardcoding Alfydd.
-6. Validate the dashboard in desktop and iOS-sized browser viewports.
+5. Continue refining `templates/project-workflow-dashboard.html`, which has been generalized from the recovered Alfydd dashboard example without hardcoding Alfydd.
+6. Validate the dashboard in desktop and iOS-sized browser viewports; static review exists, but visual QA is still pending.
 7. Update docs only where they reflect completed implementation.
 
 Important:

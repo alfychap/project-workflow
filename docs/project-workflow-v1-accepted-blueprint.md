@@ -320,7 +320,7 @@ The recovered Alfydd dashboard is now stored as:
 examples/alfydd/alfydd-project-status-dashboard.html
 ```
 
-The Alfydd file is an example and design seed, not the finished reusable template.
+The Alfydd file is an example and design seed. The reusable template is `templates/project-workflow-dashboard.html`; at this checkpoint it has been generalized and statically reviewed, with desktop/iOS browser QA still pending.
 
 Dashboard requirements extracted from the Project Status HTML work:
 
@@ -413,10 +413,10 @@ Do not block v1 on docs/ADR or a formal module contract.
 
 ### Phase 4: Dashboard Template
 
-- Generalize the recovered Alfydd HTML into `templates/project-workflow-dashboard.html`.
+- Generalize the recovered Alfydd HTML into `templates/project-workflow-dashboard.html`. Initial static template exists.
 - Bind it to the Project Context shape.
 - Keep the execution map as the primary visualization.
-- Confirm desktop and iOS usability with browser testing.
+- Confirm desktop and iOS usability with browser testing. This remains pending.
 - Confirm all interactions have a purpose.
 
 ### Phase 5: Integration and Validation

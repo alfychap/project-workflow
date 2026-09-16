@@ -4,6 +4,6 @@ Private development workspace for focused workflow skills and a reusable project
 
 Start with [PROJECT.md](PROJECT.md) for scope, decisions and current state. [PLAN.md](PLAN.md) records the implementation sequence; [RESEARCH.md](RESEARCH.md) preserves evidence and source references.
 
-Current drafts: Usage Gauge, Prompt Cleanup, Execution Planner and Project Structure. These are not installed releases. The usage ledger, other utilities, final dashboard and plugin packaging are pending.
+Current drafts: Usage Gauge, Prompt Cleanup, Execution Planner and Project Structure. A generalized static dashboard template is in `templates/project-workflow-dashboard.html`. These are not installed releases. The usage ledger, other utilities, dashboard verification and plugin packaging are pending.
 
 The `work/grill-me/` directory preserves the planning interview. Its HTML is an interview snapshot, not the final dashboard template. Backups are point-in-time snapshots unless a separate sync workflow is configured.

@@ -28,6 +28,7 @@ All paths below are repository-relative. Imported sources retain their original 
 | Project plan and brief | `PLAN.md`, `PROJECT.md` | Present | Retained; brief updated with baseline coverage |
 | Accepted blueprint and handoff | `docs/project-workflow-v1-accepted-blueprint.md`, `handoff/codex-implementation-handoff.md` | Missing | Added after the backup audit |
 | Alfydd dashboard example | `examples/alfydd/alfydd-project-status-dashboard.html` | Missing | Recovered from Google Drive file `1PACjZ4yzxp-JJ7YZ4uLDLj-pEN6DaD14` |
+| Reusable dashboard template | `templates/project-workflow-dashboard.html` | Missing | Created from Alfydd design seed; static review passed, browser/mobile QA pending |
 | Evidence and interview | `RESEARCH.md`, `work/grill-me/` | Present | Retained |
 
 Usage Gauge is the planned successor to Token Estimate Header, not a byte-identical rename. Prompt Cleanup and Project Structure are the planned split of Messy Material. Prompt Coach remains a separate skill, not an alias for Prompt Cleanup. Project Status is now present as the installed baseline; its planned refinement is still unfinished. No additional PLAN.md or PROJECT.md files exist inside the four imported source directories.
@@ -36,4 +37,4 @@ Usage Gauge is the planned successor to Token Estimate Header, not a byte-identi
 
 GitHub commits/pushes, Drive ZIP uploads and Notion attachments/pages are **manual, point-in-time snapshots, not automatic sync**. Editing this repo does not update installed `~/.codex/skills`, GitHub, Drive or Notion. Pushing GitHub does not refresh Drive or Notion. The local project folder remains the working copy.
 
-The existing ZIP omits `.git`, `backups/`, OS metadata and environment files and contains a SHA-256 manifest. The accepted blueprint, handoff prompt and recovered Alfydd dashboard example were added after the last backup audit; check current Git history for repository coverage, and refresh Drive/Notion separately before claiming coverage there. The unfinished ledger, focused utilities, reusable dashboard template and final plugin package are not claimed as implemented.
+The existing ZIP omits `.git`, `backups/`, OS metadata and environment files and contains a SHA-256 manifest. The accepted blueprint, handoff prompt, recovered Alfydd dashboard example and reusable dashboard template were added after the last backup audit; check current Git history for repository coverage, and refresh Drive/Notion separately before claiming coverage there. The unfinished ledger, focused utilities, browser/mobile dashboard QA and final plugin package are not claimed as implemented.

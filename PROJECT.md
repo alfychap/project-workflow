@@ -20,7 +20,7 @@ The usage measurement contract is written; a deterministic ledger collector and 
 
 Installed baselines for Messy Material, Project Status, Prompt Coach and Token Estimate Header are now copied under their original names in `skills/`, including supporting assets and agent metadata. `skills/BASELINE-MANIFEST.json` records import provenance and hashes; [BACKUPS.md](BACKUPS.md) records coverage and snapshot limits. The earlier Drive/Notion snapshot lacks these imports and still needs a manual refresh.
 
-Project Status refinement, Workflow Health, the final HTML template and plugin package remain unfinished. The latest Alfydd dashboard HTML has been recovered from Google Drive and saved as [examples/alfydd/alfydd-project-status-dashboard.html](examples/alfydd/alfydd-project-status-dashboard.html). It is an example/design seed, not the finalized reusable template.
+Project Status refinement, Workflow Health and the plugin package remain unfinished. The latest Alfydd dashboard HTML has been recovered from Google Drive and saved as [examples/alfydd/alfydd-project-status-dashboard.html](examples/alfydd/alfydd-project-status-dashboard.html). A generalized static dashboard template now lives at [templates/project-workflow-dashboard.html](templates/project-workflow-dashboard.html), pending browser/mobile visual QA.
 
 ## Completion criteria
 
