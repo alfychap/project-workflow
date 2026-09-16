@@ -284,6 +284,16 @@
     .span-8 { grid-column: span 8; }
     .span-12 { grid-column: span 12; }
 
+    .section-note {
+      padding: 14px 16px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: rgba(255, 249, 234, .86);
+      box-shadow: 6px 6px 0 rgba(23, 32, 51, .82);
+      line-height: 1.45;
+      font-weight: 720;
+    }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -302,6 +312,182 @@
     .badge.risk { background: var(--coral); color: var(--ink); }
     .badge.cool { background: var(--cobalt); color: #fff; }
     .badge.weird { background: var(--violet); color: #fff; }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini-card {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: rgba(247, 243, 232, .62);
+      padding: 12px;
+      min-height: 112px;
+    }
+
+    .mini-card b,
+    .module b {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .mini-card span,
+    .module span,
+    .field span {
+      color: rgba(23, 32, 51, .72);
+      line-height: 1.35;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .module {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-height: 138px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .module .badge {
+      justify-self: start;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247, 243, 232, .55);
+      padding: 10px;
+    }
+
+    .field b {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .84rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .health-board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .health-tile {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      min-height: 112px;
+    }
+
+    .health-tile strong {
+      font-size: 1.1rem;
+    }
+
+    .lensbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .lens {
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: #fff;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .lens[aria-pressed="true"] {
+      background: var(--violet);
+      color: #fff;
+    }
+
+    .lens-panel {
+      display: none;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+      line-height: 1.45;
+    }
+
+    .lens-panel.active {
+      display: block;
+    }
+
+    .meter {
+      display: grid;
+      gap: 8px;
+    }
+
+    .meter-track {
+      height: 18px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: var(--value);
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--coral));
+    }
+
+    .scratchpad {
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      color: var(--ink);
+      line-height: 1.45;
+      box-shadow: inset 3px 3px 0 rgba(23, 32, 51, .08);
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tiny-button {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--green);
+      padding: 9px 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .tiny-button.secondary {
+      background: #fff;
+    }
 
     .list {
       display: grid;
@@ -469,23 +655,26 @@
       align-items: center;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
       .metric-ring { grid-template-columns: 1fr; }
+      .module-grid, .mini-grid, .health-board, .fields { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
       .shell { width: min(100% - 20px, 1480px); padding-top: 14px; }
       .topbar { align-items: flex-start; flex-direction: column; }
-      .hero-main { min-height: 500px; padding: 18px; }
-      .hero-copy h2 { font-size: 3rem; }
+      .hero-main { min-height: 430px; padding: 18px; }
+      .hero-copy h2 { font-size: 2.65rem; }
       .scoreboard { grid-template-columns: 1fr; }
       .score { border-right: 0; border-bottom: 2px solid var(--ink); }
       .score:last-child { border-bottom: 0; }
       .step { grid-template-columns: 1fr; }
       .date-pill { white-space: normal; }
       .footer { display: grid; }
+      .module-grid, .mini-grid, .health-board, .fields { grid-template-columns: 1fr; }
+      .card h3 { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
@@ -493,7 +682,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">A</div>
+        <div class="brand-mark">PW</div>
         <div>
           <p class="kicker">Project workflow</p>
           <h1>project checkpoint</h1>
@@ -518,9 +707,9 @@
 
       <aside class="panel hero-side">
         <div class="scoreboard">
-          <div class="score"><b>3</b><span>Active goals</span></div>
-          <div class="score"><b>5</b><span>Known risks</span></div>
-          <div class="score"><b>1</b><span>Next action</span></div>
+          <div class="score"><b>7</b><span>Workflow inputs</span></div>
+          <div class="score"><b>6</b><span>Skill modules</span></div>
+          <div class="score"><b>3</b><span>Action lenses</span></div>
         </div>
         <div class="brief">
           <h3>Latest checkpoint input</h3>
@@ -532,12 +721,19 @@
 
     <nav class="tabbar" aria-label="Dashboard sections">
       <button class="tab" aria-selected="true" data-tab-target="overview">Overview</button>
+      <button class="tab" aria-selected="false" data-tab-target="context">Context</button>
+      <button class="tab" aria-selected="false" data-tab-target="modules">Modules</button>
       <button class="tab" aria-selected="false" data-tab-target="workflow">Workflow</button>
-      <button class="tab" aria-selected="false" data-tab-target="critique">Workflow health</button>
+      <button class="tab" aria-selected="false" data-tab-target="health">Health</button>
+      <button class="tab" aria-selected="false" data-tab-target="evidence">Evidence</button>
       <button class="tab" aria-selected="false" data-tab-target="prompts">Prompts</button>
     </nav>
 
     <section id="overview" class="tab-panel grid">
+      <div class="span-12 section-note">
+        Dashboard purpose: aggregate every useful output the Project Workflow skills can provide, then make the next action obvious without turning the dashboard itself into a source of truth.
+      </div>
+
       <article class="card span-5">
         <h3>Project Health <span class="badge good">steady</span></h3>
         <div class="card-body metric-ring">
@@ -551,7 +747,7 @@
       </article>
 
       <article class="card span-7">
-        <h3>Execution Map <span class="badge cool">read first</span></h3>
+        <h3>Execution Map <span class="badge cool">primary</span></h3>
         <div class="card-body">
           <div class="timeline">
             <div class="step">
@@ -570,38 +766,112 @@
         </div>
       </article>
 
-      <article class="card span-4">
-        <h3>Doing Right <span class="badge good">keep</span></h3>
+      <article class="card span-6">
+        <h3>Action Lenses <span class="badge weird">interactive</span></h3>
+        <div class="card-body">
+          <div class="lensbar" aria-label="Action lens selector">
+            <button class="lens" aria-pressed="true" data-lens-target="decide">Decide</button>
+            <button class="lens" aria-pressed="false" data-lens-target="review">Review</button>
+            <button class="lens" aria-pressed="false" data-lens-target="execute">Execute</button>
+          </div>
+          <div id="decide" class="lens-panel active"><b>Decide:</b> confirm the objective, accepted constraints, definition of done, and whether a higher-cost execution path is actually worth it.</div>
+          <div id="review" class="lens-panel"><b>Review:</b> check evidence, uncertainty, risks, prompt quality, usage intensity, and repository hygiene before claiming progress.</div>
+          <div id="execute" class="lens-panel"><b>Execute:</b> take the smallest validated next step, record the result, and update the checkpoint or handoff text.</div>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Workflow Inputs <span class="badge cool">coverage</span></h3>
+        <div class="card-body">
+          <div class="mini-grid">
+            <div class="mini-card"><b>Blueprint</b><span>Purpose, scope, constraints, architecture, success criteria.</span></div>
+            <div class="mini-card"><b>Checkpoint</b><span>Current phase, completed work, open risk, next action.</span></div>
+            <div class="mini-card"><b>Evidence</b><span>Files, commits, screenshots, measurements, user decisions.</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h3>Purposeful Cards <span class="badge good">no filler</span></h3>
+        <div class="card-body">
+          <div class="module-grid">
+            <div class="module"><span class="badge cool">Project Status</span><b>What is true now?</b><span>State, blocker, execution map, checkpoint, next action.</span></div>
+            <div class="module"><span class="badge good">Prompt Cleanup</span><b>What should be rewritten?</b><span>Clean replacement prompt only, preserving nuance.</span></div>
+            <div class="module"><span class="badge warn">Usage Gauge</span><b>How expensive is this?</b><span>Qualitative intensity, main driver, one safe saving move.</span></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="context" class="tab-panel grid hidden">
+      <article class="card span-12">
+        <h3>Project Context <span class="badge cool">shared state</span></h3>
+        <div class="card-body fields">
+          <div class="field"><b>Identity</b><span>[Project name], repository, owner, destination surface.</span></div>
+          <div class="field"><b>Purpose</b><span>The reason this project exists and the user outcome it supports.</span></div>
+          <div class="field"><b>Phase</b><span>Explore, Plan, Design, Build, Verify, Deploy, Maintain, or Archive.</span></div>
+          <div class="field"><b>Status</b><span>Current state, confidence, and any unresolved uncertainty.</span></div>
+          <div class="field"><b>Goals</b><span>Active goals and which one is the current focus.</span></div>
+          <div class="field"><b>Scope</b><span>Included work, excluded work, and expansion rules.</span></div>
+          <div class="field"><b>Constraints</b><span>Privacy, local-first boundaries, tools, budget, quality bar.</span></div>
+          <div class="field"><b>Checkpoint</b><span>Last durable commit, file, validation artifact, or handoff note.</span></div>
+        </div>
+      </article>
+
+      <article class="card span-7">
+        <h3>Definition of Done <span class="badge good">exit signal</span></h3>
         <div class="card-body">
           <ul class="list">
-            <li><span class="dot green"></span><span>Keeping a compact source of truth for phase, scope, and next action.</span></li>
-            <li><span class="dot green"></span><span>Separating evidence from interpretation and uncertainty.</span></li>
-            <li><span class="dot green"></span><span>Saving reusable artifacts so future work can resume cheaply.</span></li>
+            <li><span class="dot green"></span><span>Required deliverables exist in the expected location.</span></li>
+            <li><span class="dot green"></span><span>Validation evidence is linked or summarized.</span></li>
+            <li><span class="dot gold"></span><span>Residual risks and pending external coverage are explicitly named.</span></li>
+            <li><span class="dot violet"></span><span>The next continuation can start from this dashboard without rereading long history.</span></li>
           </ul>
         </div>
       </article>
 
-      <article class="card span-4">
-        <h3>Needs Fixing <span class="badge risk">watch</span></h3>
+      <article class="card span-5">
+        <h3>Local Scratchpad <span class="badge weird">browser only</span></h3>
         <div class="card-body">
-          <ul class="list">
-            <li><span class="dot coral"></span><span>Claims without evidence should be marked uncertain or removed.</span></li>
-            <li><span class="dot coral"></span><span>Scope additions should wait until the current milestone is verified.</span></li>
-            <li><span class="dot coral"></span><span>External backup or deployment coverage must not be assumed.</span></li>
-          </ul>
+          <textarea class="scratchpad" id="scratchpad" placeholder="Temporary notes for this browser session. Copy anything durable into the actual project files."></textarea>
+          <div class="control-row">
+            <button class="tiny-button" id="save-scratch">Save locally</button>
+            <button class="tiny-button secondary" id="clear-scratch">Clear</button>
+            <span class="badge" id="scratch-status">not saved</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="modules" class="tab-panel grid hidden">
+      <article class="card span-12">
+        <h3>Skill Output Matrix <span class="badge cool">agglomeration</span></h3>
+        <div class="card-body module-grid">
+          <div class="module"><span class="badge cool">Project Status</span><b>Owns</b><span>Phase, progress, blocker, definition of done, Execution Map, evidence, checkpoint, next action.</span></div>
+          <div class="module"><span class="badge good">Prompt Cleanup</span><b>Owns</b><span>Faithful cleaned replacement prompt only by default; no critique or execution unless asked.</span></div>
+          <div class="module"><span class="badge warn">Usage Gauge</span><b>Owns</b><span>Light to Extreme intensity, usage driver, high-cost warning, one quality-preserving saving move.</span></div>
+          <div class="module"><span class="badge weird">Execution Planner</span><b>Owns</b><span>Capability-based surface, model, reasoning, tool, plugin, and skill route.</span></div>
+          <div class="module"><span class="badge good">Project Structure</span><b>Owns</b><span>Folders, artifact placement, docs, Git workflow, checkpoints, archive strategy, concise PROJECT.md.</span></div>
+          <div class="module"><span class="badge cool">Prompt Coach</span><b>Owns</b><span>Coaching format, destination and tool recommendations, X/Y/Z refinements, success-criteria nudges.</span></div>
         </div>
       </article>
 
-      <article class="card span-4">
-        <h3>Dashboard Palette <span class="badge weird">template</span></h3>
+      <article class="card span-6">
+        <h3>Prompt Cleanup Preview <span class="badge good">copy-ready</span></h3>
+        <div class="card-body prompt">
+          <code>Rewrite the pasted request into a complete, clearer replacement prompt. Preserve every distinct intent, constraint, preference, uncertainty, named entity, path, URL, example, and meaningful nuance. Do not add analysis, execution planning, model recommendations, or new requirements.</code>
+          <button class="copy" data-copy="Rewrite the pasted request into a complete, clearer replacement prompt. Preserve every distinct intent, constraint, preference, uncertainty, named entity, path, URL, example, and meaningful nuance. Do not add analysis, execution planning, model recommendations, or new requirements.">Copy cleanup contract</button>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Execution Planner Preview <span class="badge weird">capability based</span></h3>
         <div class="card-body">
           <table class="table">
-            <tr><th>Role</th><th>Color</th></tr>
-            <tr><td>Ink frame</td><td>#172033</td></tr>
-            <tr><td>Paper base</td><td>#F7F3E8</td></tr>
-            <tr><td>Primary action</td><td>#4F7CFF</td></tr>
-            <tr><td>Risk</td><td>#FF6B5F</td></tr>
-            <tr><td>Progress</td><td>#8EDC6D</td></tr>
+            <tr><th>Mode</th><th>Meaning</th></tr>
+            <tr><td>Good enough</td><td>Lowest-cost configuration expected to complete reliably at the requested quality.</td></tr>
+            <tr><td>Best worth using</td><td>Higher setting only when the improvement meaningfully justifies extra usage.</td></tr>
+            <tr><td>Availability note</td><td>Say unknown or verify; never invent unavailable combinations.</td></tr>
           </table>
         </div>
       </article>
@@ -622,6 +892,17 @@
               <tr><td>Checkpoint</td><td>Commit, save, or hand off only after validation evidence is recorded.</td><td>Project Structure</td></tr>
             </tbody>
           </table>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h3>Workflow Map <span class="badge cool">milestones</span></h3>
+        <div class="card-body">
+          <div class="timeline">
+            <div class="step"><div class="step-time">●</div><div class="step-card"><b>Completed milestone.</b> Evidence-backed work that should not be re-litigated.</div></div>
+            <div class="step"><div class="step-time">◉</div><div class="step-card"><b>Current work.</b> The one milestone active right now, with an exit condition.</div></div>
+            <div class="step"><div class="step-time">○</div><div class="step-card"><b>Upcoming milestone.</b> The next meaningful continuation after the current work is validated.</div></div>
+          </div>
         </div>
       </article>
 
@@ -661,7 +942,21 @@
       </article>
     </section>
 
-    <section id="critique" class="tab-panel grid hidden">
+    <section id="health" class="tab-panel grid hidden">
+      <article class="card span-12">
+        <h3>Workflow Health <span class="badge warn">aggregator</span></h3>
+        <div class="card-body health-board">
+          <div class="health-tile"><span class="badge good">healthy</span><strong>Scope</strong><span>Clear current milestone and explicit exclusions.</span></div>
+          <div class="health-tile"><span class="badge warn">attention</span><strong>Usage</strong><span>Watch context-heavy rereads and broad undirected passes.</span></div>
+          <div class="health-tile"><span class="badge good">healthy</span><strong>Structure</strong><span>Artifacts have a place and checkpoints are named.</span></div>
+          <div class="health-tile"><span class="badge risk">problem</span><strong>Evidence gap</strong><span>Any completion claim without a source should be repaired.</span></div>
+          <div class="health-tile"><span class="badge warn">attention</span><strong>Prompt quality</strong><span>Success criteria may need sharpening on large prompts.</span></div>
+          <div class="health-tile"><span class="badge good">healthy</span><strong>Execution</strong><span>Available capabilities are routed before work begins.</span></div>
+          <div class="health-tile"><span class="badge warn">attention</span><strong>Backup</strong><span>Git, Drive, Notion, and local copies are separate checkpoints.</span></div>
+          <div class="health-tile"><span class="badge good">healthy</span><strong>Overhead</strong><span>Dashboard summarizes; it should not duplicate deep module output.</span></div>
+        </div>
+      </article>
+
       <article class="card span-6">
         <h3>Prompt Quality <span class="badge good">high intent</span></h3>
         <div class="card-body">
@@ -674,15 +969,14 @@
       </article>
 
       <article class="card span-6">
-        <h3>Capability Guidance <span class="badge cool">balanced</span></h3>
+        <h3>Usage Gauge <span class="badge warn">qualitative</span></h3>
         <div class="card-body">
-          <table class="table">
-            <tr><th>Need</th><th>Recommendation principle</th></tr>
-            <tr><td>Small text cleanup</td><td>Use the current default unless a stronger option is clearly beneficial.</td></tr>
-            <tr><td>Multi-file implementation</td><td>Use local repository tooling and enough reasoning to avoid regressions.</td></tr>
-            <tr><td>Project-history synthesis</td><td>Start from the latest checkpoint before rereading old history.</td></tr>
-            <tr><td>External apps or plugins</td><td>Recommend only exposed or verified available capabilities.</td></tr>
-          </table>
+          <div class="meter">
+            <b>Representative intensity: Moderate to Heavy</b>
+            <div class="meter-track"><div class="meter-fill" style="--value: 62%"></div></div>
+            <span>Main driver: multi-section dashboard review and visual QA, not raw prompt length.</span>
+            <span>Saving move: start from the current checkpoint and targeted screenshots before rereading old chats.</span>
+          </div>
         </div>
       </article>
 
@@ -691,6 +985,41 @@
         <div class="card-body prompt">
           <code>[Project name] is currently in [phase]. Completed: [evidence-backed work]. Current risk: [main blocker or uncertainty]. Next: [single concrete action]. Definition of done: [specific completion signal].</code>
           <button class="copy" data-copy="[Project name] is currently in [phase]. Completed: [evidence-backed work]. Current risk: [main blocker or uncertainty]. Next: [single concrete action]. Definition of done: [specific completion signal].">Copy checkpoint</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="evidence" class="tab-panel grid hidden">
+      <article class="card span-7">
+        <h3>Evidence Ledger <span class="badge cool">source-backed</span></h3>
+        <div class="card-body">
+          <table class="table">
+            <tr><th>Claim</th><th>Evidence</th><th>Confidence</th></tr>
+            <tr><td>Dashboard exists</td><td><code>templates/project-workflow-dashboard.html</code></td><td>High</td></tr>
+            <tr><td>Seed preserved</td><td><code>examples/alfydd/alfydd-project-status-dashboard.html</code></td><td>High</td></tr>
+            <tr><td>Skill boundaries accepted</td><td><code>docs/project-workflow-v1-accepted-blueprint.md</code></td><td>High</td></tr>
+            <tr><td>Visual QA complete</td><td><code>validation/dashboard-template-static-review.md</code></td><td>High</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-5">
+        <h3>Backup Boundary <span class="badge warn">manual</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot green"></span><span>Git commit records repository state.</span></li>
+            <li><span class="dot gold"></span><span>Drive and Notion snapshots do not auto-refresh.</span></li>
+            <li><span class="dot coral"></span><span>Never treat an archive or duplicate as deletion permission.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h3>Review Checklist <span class="badge good">before done</span></h3>
+        <div class="card-body mini-grid">
+          <div class="mini-card"><b>Desktop</b><span>First viewport balanced; tabs, cards, and copy buttons visible and usable.</span></div>
+          <div class="mini-card"><b>iOS</b><span>No clipped labels, overflow, unreadable tables, or accidental overlap.</span></div>
+          <div class="mini-card"><b>Interaction</b><span>Tabs, lenses, refresh, copy buttons, and scratchpad controls update state.</span></div>
         </div>
       </article>
     </section>
@@ -744,14 +1073,67 @@
       const value = document.getElementById('checkpoint').value.trim();
       const label = value.length > 260 ? 'rich checkpoint' : 'compact checkpoint';
       document.querySelector('.date-pill').textContent = `Checkpoint · ${label}`;
-      openTab('critique');
+      openTab('health');
+    });
+
+    const lenses = [...document.querySelectorAll('[data-lens-target]')];
+    const lensPanels = [...document.querySelectorAll('.lens-panel')];
+    lenses.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.lensTarget;
+        lenses.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        lensPanels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+      });
+    });
+
+    const scratchpad = document.getElementById('scratchpad');
+    const scratchStatus = document.getElementById('scratch-status');
+    const scratchKey = 'project-workflow-dashboard-scratchpad';
+    if (scratchpad) {
+      scratchpad.value = localStorage.getItem(scratchKey) || '';
+    }
+    document.getElementById('save-scratch')?.addEventListener('click', () => {
+      localStorage.setItem(scratchKey, scratchpad.value);
+      scratchStatus.textContent = 'saved locally';
+      scratchStatus.className = 'badge good';
+    });
+    document.getElementById('clear-scratch')?.addEventListener('click', () => {
+      scratchpad.value = '';
+      localStorage.removeItem(scratchKey);
+      scratchStatus.textContent = 'cleared';
+      scratchStatus.className = 'badge warn';
     });
 
     document.querySelectorAll('.copy').forEach(button => {
       button.addEventListener('click', async () => {
-        await navigator.clipboard.writeText(button.dataset.copy);
         const original = button.textContent;
-        button.textContent = 'Copied';
+        let copied = false;
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(button.dataset.copy);
+            copied = true;
+          }
+        } catch (error) {
+          copied = false;
+        }
+
+        if (!copied) {
+          const fallback = document.createElement('textarea');
+          fallback.value = button.dataset.copy;
+          fallback.setAttribute('readonly', '');
+          fallback.style.position = 'fixed';
+          fallback.style.left = '-9999px';
+          document.body.appendChild(fallback);
+          fallback.select();
+          try {
+            copied = document.execCommand('copy');
+          } catch (error) {
+            copied = false;
+          }
+          fallback.remove();
+        }
+
+        button.textContent = copied ? 'Copied' : 'Copy unavailable';
         setTimeout(() => { button.textContent = original; }, 1200);
       });
     });
