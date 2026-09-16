@@ -7,19 +7,20 @@ Create a low-overhead set of reusable skills that clarify prompts, organize proj
 - Usage Gauge replaces token-estimate-header's guessed context percentage with qualitative intensity, meaningful drivers and practical savings. Measurements remain distinct from forecasts.
 - Collect bounded before/after telemetry automatically for Heavy, Intense and Extreme tasks when the skill is active and telemetry is available. Smaller tasks collect only when requested. No background polling is implied.
 - Prompt Cleanup and Prompt Coach remain separate. Cleanup returns faithful replacement text; Coach retains recommendations and X/Y/Z refinements.
+- Execution Planner is capability-based rather than catalog-based. It discovers currently available surfaces, models, reasoning levels, tools, plugins and skills before distinguishing good-enough from best-worth-using recommendations.
 - Messy Material splits into Prompt Cleanup and Project Structure. Project Status retains its evidence-based execution map, blockers, controls and next action; detailed model/surface/usage analysis belongs in focused utilities.
 - Project Structure creates or updates at least a concise PROJECT.md from the discussion and relevant existing material. It reuses existing artifacts and suggests additional ones only for a clear purpose. A proposed workspace tree does not move files.
 - Save working material in this folder. Installed originals remain the baseline during refinement.
 
 ## Current state
 
-Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). These are not installed or behaviorally validated replacements.
+Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md), [Execution Planner](skills/execution-planner/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). The accepted addendum checks are captured in [validation/addendum-refinements.md](validation/addendum-refinements.md). These are not installed or behaviorally validated replacements.
 
 The usage measurement contract is written; a deterministic ledger collector and historical validation remain pending. The bundled skill validator has not run successfully because its Python environment lacks PyYAML.
 
 Installed baselines for Messy Material, Project Status, Prompt Coach and Token Estimate Header are now copied under their original names in `skills/`, including supporting assets and agent metadata. `skills/BASELINE-MANIFEST.json` records import provenance and hashes; [BACKUPS.md](BACKUPS.md) records coverage and snapshot limits. The earlier Drive/Notion snapshot lacks these imports and still needs a manual refresh.
 
-Project Status refinement, focused model/surface utilities, the final HTML template and plugin package remain unfinished. The latest actual HTML must still be obtained and inspected; the source conversation alone is not the artifact.
+Project Status refinement, Workflow Health, the final HTML template and plugin package remain unfinished. The latest Alfydd dashboard HTML has been recovered from Google Drive and saved as [examples/alfydd/alfydd-project-status-dashboard.html](examples/alfydd/alfydd-project-status-dashboard.html). It is an example/design seed, not the finalized reusable template.
 
 ## Completion criteria
 
@@ -31,6 +32,6 @@ Project Status refinement, focused model/surface utilities, the final HTML templ
 
 ## Sources and next work
 
-[PLAN.md](PLAN.md) tracks the approved sequence; [RESEARCH.md](RESEARCH.md) records source conversations, telemetry evidence and limitations. Interview decisions are stored in work/grill-me/state.json.
+[PLAN.md](PLAN.md) tracks the approved sequence; [RESEARCH.md](RESEARCH.md) records source conversations, telemetry evidence and limitations. The accepted consolidated blueprint is [docs/project-workflow-v1-accepted-blueprint.md](docs/project-workflow-v1-accepted-blueprint.md), and the implementation handoff prompt is [handoff/codex-implementation-handoff.md](handoff/codex-implementation-handoff.md). Interview decisions are stored in work/grill-me/state.json.
 
 Next: validate Usage Gauge's instructions and representative measurement behavior, then continue the remaining skill refinements in the approved sequence.

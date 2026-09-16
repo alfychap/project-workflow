@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alfydd Project Status Dashboard</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --ink-2: #26344F;
+      --paper: #F7F3E8;
+      --paper-2: #FFF9EA;
+      --cobalt: #4F7CFF;
+      --coral: #FF6B5F;
+      --green: #8EDC6D;
+      --gold: #F4C95D;
+      --violet: #8C6FF7;
+      --line: rgba(23, 32, 51, .16);
+      --shadow: 0 18px 60px rgba(23, 32, 51, .18);
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 10%, rgba(79, 124, 255, .24), transparent 28%),
+        radial-gradient(circle at 85% 6%, rgba(142, 220, 109, .28), transparent 27%),
+        linear-gradient(135deg, #F7F3E8 0%, #FFF9EA 48%, #E7F3FF 100%);
+    }
+
+    button, input, textarea { font: inherit; }
+
+    .shell {
+      width: min(1480px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 36px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: linear-gradient(145deg, var(--cobalt), var(--violet));
+      color: white;
+      box-shadow: 6px 6px 0 var(--ink);
+      font-weight: 900;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(1.65rem, 3vw, 3.2rem);
+      line-height: .95;
+      letter-spacing: 0;
+    }
+
+    .kicker {
+      color: rgba(23, 32, 51, .66);
+      font-size: .9rem;
+      font-weight: 760;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 5px;
+    }
+
+    .date-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--paper-2);
+      box-shadow: 4px 4px 0 var(--ink);
+      font-weight: 850;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: rgba(255, 249, 234, .9);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-main {
+      min-height: 410px;
+      padding: 26px;
+      position: relative;
+      display: grid;
+      align-content: space-between;
+      background:
+        linear-gradient(120deg, rgba(23, 32, 51, .92), rgba(38, 52, 79, .84)),
+        radial-gradient(circle at 82% 14%, rgba(244, 201, 93, .42), transparent 20%),
+        linear-gradient(160deg, #5B91D8, #1C4774 55%, #071421);
+      color: #fff;
+    }
+
+    .lake-strip {
+      position: absolute;
+      inset: auto 0 0;
+      height: 124px;
+      background:
+        repeating-linear-gradient(178deg, rgba(255,255,255,.18) 0 2px, transparent 2px 14px),
+        linear-gradient(180deg, rgba(79, 124, 255, .16), rgba(142, 220, 109, .22));
+      border-top: 2px solid rgba(255,255,255,.22);
+      opacity: .95;
+    }
+
+    .hero-copy {
+      position: relative;
+      max-width: 760px;
+      z-index: 1;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(2.4rem, 5vw, 5.6rem);
+      line-height: .86;
+      letter-spacing: 0;
+      max-width: 860px;
+    }
+
+    .hero-copy p {
+      margin-top: 18px;
+      max-width: 700px;
+      color: rgba(255,255,255,.78);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 12px 16px;
+      font-weight: 900;
+      box-shadow: 4px 4px 0 var(--ink);
+      cursor: pointer;
+    }
+
+    .action.secondary {
+      background: #fff;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 410px;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .score {
+      padding: 16px;
+      border-right: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .score:last-child { border-right: 0; }
+    .score b { display: block; font-size: 1.65rem; line-height: 1; }
+    .score span { display: block; margin-top: 8px; color: rgba(23, 32, 51, .62); font-weight: 780; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+
+    .brief {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .brief textarea {
+      width: 100%;
+      min-height: 146px;
+      resize: vertical;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.45;
+      box-shadow: inset 3px 3px 0 rgba(23, 32, 51, .08);
+    }
+
+    .tabbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .tab {
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: #fff;
+      padding: 10px 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 8px 8px 0 rgba(23, 32, 51, .88);
+      overflow: hidden;
+    }
+
+    .card h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper-2);
+      font-size: 1.05rem;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: #fff;
+      font-size: .78rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .badge.good { background: var(--green); }
+    .badge.warn { background: var(--gold); }
+    .badge.risk { background: var(--coral); color: var(--ink); }
+    .badge.cool { background: var(--cobalt); color: #fff; }
+    .badge.weird { background: var(--violet); color: #fff; }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247, 243, 232, .55);
+      line-height: 1.35;
+    }
+
+    .dot {
+      width: 13px;
+      height: 13px;
+      margin-top: 3px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--cobalt);
+      flex: 0 0 auto;
+    }
+
+    .dot.green { background: var(--green); }
+    .dot.gold { background: var(--gold); }
+    .dot.coral { background: var(--coral); }
+    .dot.violet { background: var(--violet); }
+
+    .metric-ring {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .ring {
+      width: 150px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      background: conic-gradient(var(--green) 0 72%, var(--gold) 72% 88%, var(--coral) 88% 100%);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .ring strong {
+      display: grid;
+      place-items: center;
+      width: 92px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      background: #fff;
+      font-size: 1.8rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      position: relative;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .step-time {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+    }
+
+    .step-card {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .prompt {
+      display: grid;
+      gap: 10px;
+    }
+
+    .prompt code {
+      display: block;
+      padding: 13px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #172033;
+      color: #FFF9EA;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .88rem;
+    }
+
+    .prompt button {
+      justify-self: start;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--green);
+      padding: 9px 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+    }
+
+    .table th, .table td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px;
+      vertical-align: top;
+      text-align: left;
+      line-height: 1.35;
+    }
+
+    .table th {
+      background: var(--ink);
+      color: #fff;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .table tr:last-child td { border-bottom: 0; }
+
+    .hidden { display: none; }
+
+    .footer {
+      margin-top: 18px;
+      padding: 18px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+      .metric-ring { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 20px, 1480px); padding-top: 14px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero-main { min-height: 500px; padding: 18px; }
+      .hero-copy h2 { font-size: 3rem; }
+      .scoreboard { grid-template-columns: 1fr; }
+      .score { border-right: 0; border-bottom: 2px solid var(--ink); }
+      .score:last-child { border-bottom: 0; }
+      .step { grid-template-columns: 1fr; }
+      .date-pill { white-space: normal; }
+      .footer { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <p class="kicker">Project status design</p>
+          <h1>alfydd checkpoint</h1>
+        </div>
+      </div>
+      <div class="date-pill">Sep 16, 2026 · WIP HTML</div>
+    </header>
+
+    <section class="hero">
+      <article class="panel hero-main">
+        <div class="hero-copy">
+          <p class="kicker" style="color:rgba(255,255,255,.7)">Personal dashboard project</p>
+          <h2>Make the dashboard easy to resume.</h2>
+          <p>This mockup turns alfydd into a quick-glance project tracker: what exists, what needs repair, where tokens leak, and what the next prompts should look like.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="action" data-tab-target="overview">Open status</button>
+          <button class="action secondary" data-tab-target="prompts">Next prompts</button>
+        </div>
+        <div class="lake-strip" aria-hidden="true"></div>
+      </article>
+
+      <aside class="panel hero-side">
+        <div class="scoreboard">
+          <div class="score"><b>8</b><span>Theme states</span></div>
+          <div class="score"><b>55</b><span>Site versions</span></div>
+          <div class="score"><b>1</b><span>Portable HTML</span></div>
+        </div>
+        <div class="brief">
+          <h3>Latest checkpoint input</h3>
+          <textarea id="checkpoint">alfydd is the personal dashboard project: date-led public label, 8 day/night visual themes, particle effects, cards below hero, characters above fold, bottom floating control on iPhone, mock/today-data shareable HTML, and saved assets/docs. Current turn: stop relying on a live site for this project-status design and keep the output as portable HTML.</textarea>
+          <button class="action" id="refresh">Refresh review snapshot</button>
+        </div>
+      </aside>
+    </section>
+
+    <nav class="tabbar" aria-label="Dashboard sections">
+      <button class="tab" aria-selected="true" data-tab-target="overview">Overview</button>
+      <button class="tab" aria-selected="false" data-tab-target="workflow">Workflow</button>
+      <button class="tab" aria-selected="false" data-tab-target="critique">AI critique</button>
+      <button class="tab" aria-selected="false" data-tab-target="prompts">Prompts</button>
+    </nav>
+
+    <section id="overview" class="tab-panel grid">
+      <article class="card span-5">
+        <h3>Project Health <span class="badge good">steady</span></h3>
+        <div class="card-body metric-ring">
+          <div class="ring"><strong>72</strong></div>
+          <ul class="list">
+            <li><span class="dot green"></span><span><b>Strong visual identity.</b> The lake/day-night concept and character layer are memorable enough to anchor the dashboard.</span></li>
+            <li><span class="dot gold"></span><span><b>Risk is drift.</b> The project can balloon when every dashboard card tries to become a full app.</span></li>
+            <li><span class="dot coral"></span><span><b>Needs a source of truth.</b> Keep mock data, saved docs, and live site behavior clearly separated.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-7">
+        <h3>Quick Resume Map <span class="badge cool">read first</span></h3>
+        <div class="card-body">
+          <div class="timeline">
+            <div class="step">
+              <div class="step-time">Now</div>
+              <div class="step-card"><b>Portable design artifact.</b> Use this HTML to remember the alfydd project without depending on production hosting.</div>
+            </div>
+            <div class="step">
+              <div class="step-time">Next</div>
+              <div class="step-card"><b>Asset audit.</b> Find the eight lake hero images and confirm their time-of-day mapping.</div>
+            </div>
+            <div class="step">
+              <div class="step-time">Later</div>
+              <div class="step-card"><b>Dashboard restart.</b> Decide whether alfydd stays a static personal start page or becomes a true daily briefing app.</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Doing Right <span class="badge good">keep</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot green"></span><span>Keeping the public UI clean: date, visual scene, useful cards.</span></li>
+            <li><span class="dot green"></span><span>Separating internal project names from visible labels.</span></li>
+            <li><span class="dot green"></span><span>Saving reusable HTML so Gemini or future chats can inspect it cheaply.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Needs Fixing <span class="badge risk">watch</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot coral"></span><span>Theme logic can get visually inconsistent if card colors do not follow the current background.</span></li>
+            <li><span class="dot coral"></span><span>Too many “daily briefing” ambitions can hide the simple home-dashboard purpose.</span></li>
+            <li><span class="dot coral"></span><span>Assets need inventory: which image belongs to which theme, and where each source lives.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Design Palette <span class="badge weird">refined</span></h3>
+        <div class="card-body">
+          <table class="table">
+            <tr><th>Role</th><th>Color</th></tr>
+            <tr><td>Ink frame</td><td>#172033</td></tr>
+            <tr><td>Paper base</td><td>#F7F3E8</td></tr>
+            <tr><td>Primary action</td><td>#4F7CFF</td></tr>
+            <tr><td>Risk</td><td>#FF6B5F</td></tr>
+            <tr><td>Progress</td><td>#8EDC6D</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section id="workflow" class="tab-panel grid hidden">
+      <article class="card span-8">
+        <h3>Best Next Sequence <span class="badge warn">low-token</span></h3>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr><th>Move</th><th>Purpose</th><th>Best surface</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Find assets</td><td>Locate eight lake landing images and map filenames to theme slots.</td><td>Codex / local files</td></tr>
+              <tr><td>Make checkpoint</td><td>Write one compact current-state note for alfydd.</td><td>ChatGPT regular chat</td></tr>
+              <tr><td>Review design</td><td>Compare screenshot, mobile layout, and palette consistency.</td><td>Work Mode only if visual testing matters</td></tr>
+              <tr><td>Publish later</td><td>Only redeploy after the static HTML and saved docs are clearly useful.</td><td>Sites</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Overengineering Check <span class="badge risk">cap scope</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot coral"></span><span>Do not rebuild all eight themes just to inspect the project status idea.</span></li>
+            <li><span class="dot gold"></span><span>Keep this artifact static unless you need real daily data.</span></li>
+            <li><span class="dot green"></span><span>Use the dashboard as a memory aid before turning it into another app.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Token Leakage Points <span class="badge warn">compress</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot gold"></span><span>Repeating the full alfydd visual spec every turn.</span></li>
+            <li><span class="dot gold"></span><span>Asking for broad “make it better” passes before naming the exact card or state.</span></li>
+            <li><span class="dot gold"></span><span>Mixing hosting, Drive, Notion, Library, and design generation in one prompt when only one output is needed.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Surface Recommendation <span class="badge cool">route cleanly</span></h3>
+        <div class="card-body">
+          <table class="table">
+            <tr><th>Task</th><th>Use</th></tr>
+            <tr><td>Project thinking</td><td>Regular Chat</td></tr>
+            <tr><td>Local file search/build</td><td>Codex Work</td></tr>
+            <tr><td>Bulk image/file handoff</td><td>Gemini or Drive-side prep</td></tr>
+            <tr><td>Interactive publication</td><td>Sites only when sharing matters</td></tr>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section id="critique" class="tab-panel grid hidden">
+      <article class="card span-6">
+        <h3>Prompt Efficacy <span class="badge good">high intent</span></h3>
+        <div class="card-body">
+          <ul class="list">
+            <li><span class="dot green"></span><span><b>Clear constraint:</b> “HTML, not live site” sharply reduces unnecessary deployment work.</span></li>
+            <li><span class="dot green"></span><span><b>Useful taste signal:</b> “less calm, more polished and defined” points the visual system in the right direction.</span></li>
+            <li><span class="dot gold"></span><span><b>Ambiguity:</b> “saved docs” can mean replace old docs, add links, or create separate archive files.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Model Guidance <span class="badge cool">balanced</span></h3>
+        <div class="card-body">
+          <table class="table">
+            <tr><th>Need</th><th>Model style</th></tr>
+            <tr><td>Small UI copy edits</td><td>Fast / medium reasoning</td></tr>
+            <tr><td>Visual rebuild with testing</td><td>Work Mode with browser verification</td></tr>
+            <tr><td>Project-history synthesis</td><td>Higher reasoning, but only with a checkpoint</td></tr>
+            <tr><td>Bulk asset labeling</td><td>Offload if possible, then bring back filenames and mapping</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h3>One-Sentence Checkpoint <span class="badge weird">copyable</span></h3>
+        <div class="card-body prompt">
+          <code>alfydd is my personal dashboard project: a date-led, visual daily start page with eight time-based lake themes, visible characters, themed cards, and optional saved/shareable HTML; current priority is preserving the idea clearly without overbuilding or relying on a live deployment.</code>
+          <button class="copy" data-copy="alfydd is my personal dashboard project: a date-led, visual daily start page with eight time-based lake themes, visible characters, themed cards, and optional saved/shareable HTML; current priority is preserving the idea clearly without overbuilding or relying on a live deployment.">Copy checkpoint</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="prompts" class="tab-panel grid hidden">
+      <article class="card span-4">
+        <h3>Next Prompt 1 <span class="badge good">best</span></h3>
+        <div class="card-body prompt">
+          <code>Find my eight alfydd lake landing images, list their filenames, and map each one to its likely time-of-day theme. Do not edit files yet.</code>
+          <button class="copy" data-copy="Find my eight alfydd lake landing images, list their filenames, and map each one to its likely time-of-day theme. Do not edit files yet.">Copy prompt</button>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Next Prompt 2 <span class="badge warn">scope lock</span></h3>
+        <div class="card-body prompt">
+          <code>Using the alfydd checkpoint, create a one-page PROJECT.md with current state, decisions, open issues, assets, and next action. Keep it compact.</code>
+          <button class="copy" data-copy="Using the alfydd checkpoint, create a one-page PROJECT.md with current state, decisions, open issues, assets, and next action. Keep it compact.">Copy prompt</button>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h3>Next Prompt 3 <span class="badge weird">fun fork</span></h3>
+        <div class="card-body prompt">
+          <code>Make a tiny alfydd “theme dial” HTML that previews all eight palettes and particle moods without rebuilding the full dashboard.</code>
+          <button class="copy" data-copy="Make a tiny alfydd “theme dial” HTML that previews all eight palettes and particle moods without rebuilding the full dashboard.">Copy prompt</button>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <strong>Project: alfydd · Phase: Archive / Design</strong>
+      <span>Next: confirm the eight landing images and save a compact project checkpoint.</span>
+    </footer>
+  </main>
+
+  <script>
+    const tabs = [...document.querySelectorAll('[data-tab-target]')];
+    const panels = [...document.querySelectorAll('.tab-panel')];
+    const tabButtons = [...document.querySelectorAll('.tab')];
+
+    function openTab(id) {
+      panels.forEach(panel => panel.classList.toggle('hidden', panel.id !== id));
+      tabButtons.forEach(button => button.setAttribute('aria-selected', String(button.dataset.tabTarget === id)));
+      document.querySelector('.tabbar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    tabs.forEach(item => item.addEventListener('click', () => openTab(item.dataset.tabTarget)));
+
+    document.getElementById('refresh').addEventListener('click', () => {
+      const value = document.getElementById('checkpoint').value.trim();
+      const label = value.length > 260 ? 'rich checkpoint' : 'compact checkpoint';
+      document.querySelector('.date-pill').textContent = `Sep 16, 2026 · ${label}`;
+      openTab('critique');
+    });
+
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        const original = button.textContent;
+        button.textContent = 'Copied';
+        setTimeout(() => { button.textContent = original; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>

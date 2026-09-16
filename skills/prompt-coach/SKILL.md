@@ -5,16 +5,17 @@ description: Improve a user's rough prompt by correcting wording, grammar, spell
 
 # Prompt Coach
 
-Turn rough ideas into stronger, copy-ready prompts. Preserve the user's voice, goal, factual claims, and constraints. Improve only what helps the request succeed; do not invent requirements, sources, tools, or stakes.
+Turn rough ideas into stronger, copy-ready prompts. Preserve the user's voice, goal, factual claims, and constraints. Improve only what helps the request succeed; do not invent requirements, sources, tools, or stakes. Prompt Coach can recommend refinements and execution settings, but it remains separate from Prompt Cleanup's default cleaned-prompt-only contract.
 
 ## Workflow
 
 1. Identify the user's goal, expected output, audience, context, constraints, and unknowns.
 2. Correct grammar, spelling, wording, and structure. Add concise details only when they are clearly implied or materially reduce ambiguity.
-3. Choose the most suitable destination: `ChatGPT Chat`, `ChatGPT Work`, `Codex`, `Codex CLI`, `Gemini`, or `Gemini Spark`.
-4. Recommend only relevant plugins, apps, or tools. Use `None` when tools would be redundant.
-5. Recommend a good-enough and a best-worth-using model/effort pair.
-6. Return the exact presentation format below.
+3. Notice unclear or missing success criteria in substantial prompts when that would materially improve the result, but do not impose a rigid template.
+4. Choose the most suitable destination from surfaces actually available or clearly requested in the active environment.
+5. Recommend only relevant plugins, apps, tools, or skills that are actually exposed or verified as available. Use `None` when tools would be redundant.
+6. Recommend a good-enough and a best-worth-using model/effort pair only from currently available or verified options.
+7. Return the exact presentation format below.
 
 ## Continuations
 
@@ -29,17 +30,13 @@ Treat a reply containing only `X`, `Y`, `Z`, `x`, `y`, `z`, `ⓧ`, `ⓨ`, or `�
 
 ### Destination
 
-- Choose `ChatGPT Chat` for ordinary writing, brainstorming, and one-off questions.
-- Choose `ChatGPT Work` for project files, connected apps, multi-step research, or durable deliverables.
-- Choose `Codex` for interactive coding and repository work.
-- Choose `Codex CLI` for terminal-first local development or automation.
-- Choose `Gemini` or `Gemini Spark` only when the requested work is clearly better served there, such as a user-specific Google ecosystem workflow or a fast lightweight alternative.
+Choose from surfaces currently exposed by the host or explicitly named by the user. Do not maintain a fixed destination catalog. If the best destination cannot be determined from the active environment, state the uncertainty in the recommendation field rather than inventing a surface.
 
 ### Plugins and tools
 
 - Recommend zero to five items. Include only tools that directly help complete the rewritten prompt.
-- Prefer a small complementary chain when tools have clear synergy, such as `@Google Drive` + `@Data Analytics` + `@Visualize`.
-- Name each item with its familiar `@` name. Do not recommend unavailable or speculative tools.
+- Prefer a small complementary chain when tools have clear synergy.
+- Name each item with its familiar name when available. Do not recommend unavailable or speculative tools.
 - Use `None` for self-contained writing, editing, or reasoning requests.
 
 ### Model and intelligence
@@ -49,17 +46,13 @@ Make two independent recommendations. Use the labels exactly as shown in the out
 - **Good enough**: Select the lowest-cost model and intelligence likely to complete the task well.
 - **Best worth using**: Select the lowest model and intelligence setting above which a meaningful quality gain is unlikely. Do not default to the most powerful option.
 
-Use this as a starting calibration, then adjust for ambiguity, stakes, file size, tool use, and the user's quality bar:
+Discover available model and reasoning options from the active host, tool metadata, or current official documentation when current product detail materially matters. Do not maintain a hardcoded model or reasoning catalog, and never invent unavailable combinations. If availability cannot be determined without disproportionate work, say `Available options unknown` or recommend using the current default.
 
-| Work | Good enough | Best worth using |
-| --- | --- | --- |
-| Simple rewrites, grammar, or short summaries | Luna / Low | Luna / Medium |
-| Nuanced writing, planning, or personal communication | Luna / Medium | Terra / Medium |
-| Multi-file analysis, research plans, or substantial projects | Terra / Medium | Terra / High |
-| Difficult coding, complex reasoning, or high-stakes work | Terra / High | Sol / Extra High |
-| Exceptionally complex, quality-first work where deeper exploration should materially help | Sol / Extra High | Sol / Max |
+Calibrate by task difficulty, ambiguity, stakes, file size, tool use, and the user's quality bar. A stronger model or higher reasoning setting is worth recommending only when it is likely to produce a meaningful improvement.
 
-Prefer `Sol / Extra High` over `Sol / Max` whenever their expected output quality is effectively the same. Recommend `Sol / Max` only for rare tasks where it likely produces a real improvement.
+### Success criteria
+
+When a substantial prompt lacks a clear endpoint, include a concise success-criteria refinement option or a short note inside the rewritten prompt if it is clearly implied. Do not force every prompt into a success-criteria template, and do not change Prompt Cleanup into a coaching workflow.
 
 ## Response format
 
@@ -75,8 +68,8 @@ Return only this compact layout unless the user asks for explanation or alternat
 *{One concise sentence explaining why the rewritten prompt is stronger.}*
 
 **Plugins/Tools:** {Up to five relevant `@` items joined by ` + `, or None}
-**Good enough:** {Model / Intelligence}
-**Best worth using:** {Model / Intelligence}
+**Good enough:** {Available model / reasoning, current default, or availability unknown}
+**Best worth using:** {Available model / reasoning, current default, or availability unknown}
 
 ```text
 ⓧ {Short refinement}

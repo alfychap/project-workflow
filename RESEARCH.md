@@ -24,7 +24,7 @@ Date: 2026-09-16
 
 - Test skill activation — 6aaa4cfc-20fc-83e9-a32d-4dce93cb955c: prefer emoji intensity levels, actionable warnings and low overhead over raw token counts and unexplained context percentages.
 - Compare Workflow Skills — 6aaa5512-95d4-83ea-a5cd-7b09ec99bbc4: proposed prompt cleanup, project status, structure, surface/model selection and usage skills under one router. Prior assistant suggestions are not approved implementation decisions.
-- Project Status HTML — 6aa48264-06d4-83ea-80de-bbc6cf1308b8: evidence-linked execution map, Decide/Review/Execute views, scratchpad, handoff and concise prompts. Actual latest HTML was not supplied by read_thread. Earlier Drive artifact: https://drive.google.com/file/d/1PACjZ4yzxp-JJ7YZ4uLDLj-pEN6DaD14/view . Its freshness is unverified.
+- Project Status HTML — 6aa48264-06d4-83ea-80de-bbc6cf1308b8: evidence-linked execution map, Decide/Review/Execute views, scratchpad, handoff and concise prompts. The Drive artifact `alfydd-project-status-dashboard.html` was fetched from https://drive.google.com/file/d/1PACjZ4yzxp-JJ7YZ4uLDLj-pEN6DaD14/view and saved locally at `examples/alfydd/alfydd-project-status-dashboard.html`; Drive metadata reported `text/html`, 26,231 bytes, modified 2026-09-16T06:55:20.265Z.
 
 ## Proposed measurement design (not approved)
 

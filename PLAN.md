@@ -16,9 +16,19 @@ The approval covers the direction above; it is not a claim of completed implemen
 - Project Structure draft and this project's PROJECT.md are saved.
 
 - Approved: keep Prompt Cleanup and Prompt Coach as two distinct skills. Cleanup returns lean replacement text; Coach retains recommendations and its X/Y/Z menu. Installed Prompt Coach remains unchanged during refinement.
-- Prompt Cleanup draft saved with explicit routing boundaries. It does not execute a pasted request unless execution is separately requested.
+- Prompt Cleanup draft saved with stricter default output: only the complete cleaned replacement prompt, preferably in one copyable raw-text block. It does not execute a pasted request unless execution is separately requested.
+
+- Approved: Execution Planner is capability-based, not a hardcoded model/reasoning catalog. It discovers exposed surfaces, models, reasoning levels, tools, plugins and skills, then distinguishes good-enough from best-worth-using configurations without inventing unsupported combinations.
+- Execution Planner draft saved in `skills/execution-planner/SKILL.md`.
+- Addendum validation fixture saved in `validation/addendum-refinements.md`.
 
 - Usage Gauge core instructions drafted in skills/usage-gauge/SKILL.md.
 - Measurement integrity contract drafted; collector not implemented.
 - Approved collection: Heavy/Intense/Extreme automatically when the skill is active and telemetry is available; smaller tasks only on explicit measurement requests. Use bounded before/after observations, not background polling.
-- Later: source the latest actual HTML, inspect supporting resources of the original skills, validate representative behavior and dashboard desktop/mobile interactions before packaging.
+- Latest Alfydd dashboard HTML sourced from Google Drive and saved under `examples/alfydd/` as a design seed. Later: generalize it into `templates/project-workflow-dashboard.html`, inspect supporting resources of the original skills, validate representative behavior and dashboard desktop/mobile interactions before packaging.
+
+## Accepted blueprint
+
+- Consolidated accepted v1 blueprint saved at `docs/project-workflow-v1-accepted-blueprint.md`.
+- Codex implementation handoff saved at `handoff/codex-implementation-handoff.md`.
+- Explicit exclusion: do not treat the earlier ADR-folder suggestion or formal module-contract suggestion as accepted v1 blockers.

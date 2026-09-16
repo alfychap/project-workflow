@@ -1,0 +1,665 @@
+Project Workflow — Implementation Pass
+
+Continue the existing local Project Workflow Plugin repository.
+
+Start from the repository, not chat reconstruction
+
+Treat the current local repository as authoritative.
+
+Read first, selectively:
+
+1. docs/project-workflow-v1-accepted-blueprint.md
+2. PROJECT.md
+3. PLAN.md
+4. handoff/codex-implementation-handoff.md
+5. relevant current/refined skill files
+6. relevant baseline skill only when comparing behavior
+7. examples/alfydd/alfydd-project-status-dashboard.html when working on the dashboard
+
+Do not reread unrelated project files or reconstruct decisions from old chats unless repository artifacts are genuinely insufficient.
+
+The architecture below contains additional approved refinements made after the current handoff was written. Treat them as accepted implementation requirements.
+
+Latest approved refinements already consolidated into this prompt:
+* Execution Planner recommendations are capability-based and future-proof, not tied to a hardcoded model/reasoning catalog.
+* The dashboard acceptance fixture is part of this implementation pass and should be persisted under `validation/`.
+* Prompt Cleanup remains deliberately narrow: messy prompt → faithful, clearer, copy-ready replacement prompt only by default.
+* Prompt Cleanup must preserve meaningful nuance and must not add new requirements, critique, execution planning, or project-management machinery.
+* Prompt Coach may flag missing success criteria on substantial prompts when useful, but should not impose a mandatory prompt template.
+* No new modules or dashboard cards are being added from the prompting-research review; avoid reopening architecture without a concrete implementation contradiction.
+
+⸻
+
+1. Checkpoint current consolidation
+
+Before implementing new behavior:
+
+* inspect git status and the pending diff;
+* confirm the expected consolidation changes are present;
+* correct stale documentation that describes the repository as clean/current with remote when that only applied to the previous 3865b76 checkpoint;
+* run an appropriate lightweight diff/sanity check;
+* commit the coherent consolidation checkpoint;
+* push main.
+
+Do not overwrite or discard newer local work.
+
+⸻
+
+2. Preserve the accepted architecture
+
+Project Workflow should remain a collection of focused components rather than one super-skill.
+
+Architecture:
+
+Project Blueprint
+      ↓
+Project Context
+      ↓
+Focused modules
+├─ Project Status
+├─ Prompt Cleanup
+├─ Usage Gauge
+├─ Execution Planner
+├─ Project Structure
+└─ Prompt Coach
+      ↓
+Workflow Health
+      ↓
+Project Workflow Dashboard
+
+Do not add ADR infrastructure, a formal module-contract system, or a large standardized project object.
+
+Keep Project Context deliberately lightweight.
+
+⸻
+
+3. Project Blueprint, PROJECT.md, and Project Context
+
+These are distinct.
+
+Project Blueprint
+
+Canonical detailed project definition.
+
+May contain:
+
+* purpose
+* goals
+* scope
+* requirements
+* architecture
+* constraints
+* definition of done
+* important durable decisions
+
+The accepted Project Workflow blueprint is the current reference example.
+
+PROJECT.md
+
+Fast repository orientation.
+
+It should help an agent or human understand the repository quickly without reproducing the entire Blueprint.
+
+Project Context
+
+Compact shared working representation derived from existing project evidence.
+
+Use a flexible core + extensions approach.
+
+Core concepts:
+
+* identity
+* purpose
+* phase
+* status
+* next action
+* checkpoint
+
+Optional extensions may include:
+
+* goals
+* scope
+* constraints
+* architecture
+* execution plan
+* blockers
+* deliverables
+* decisions
+* repository
+* artifacts
+* execution recommendations
+* usage health
+* workflow health
+* future ideas
+
+Do not require every field.
+
+Do not create a database or elaborate schema merely to represent Project Context.
+
+Modules may consume or contribute relevant context without being forced to emit one identical giant object.
+
+⸻
+
+4. Refine Project Status
+
+Project Status owns:
+
+* project header/status
+* current phase
+* goal
+* main blocker/risk
+* definition of done
+* Execution Map
+* milestones/timeline where useful
+* evidence and uncertainty
+* checkpoint
+* next action
+
+Remove or narrow responsibilities now owned elsewhere:
+
+* model selection
+* reasoning selection
+* surface selection
+* broad tool/plugin/skill recommendations
+* token/usage analysis
+* broad workflow critique
+
+Preserve useful baseline behavior where it still belongs.
+
+Rename Quick Resume Map conceptually to Execution Map.
+
+Project Status should define the information/relationship model. Rich interactive rendering is optional in ordinary skill output.
+
+Do not make every invocation construct a mini-dashboard.
+
+⸻
+
+5. Implement Execution Planner
+
+Execution Planner owns:
+
+* surface
+* model
+* reasoning level
+* tools
+* plugins
+* skills
+* execution notes
+
+Consolidate the useful execution-routing responsibilities previously spread across Project Status / Prompt Coach / model and surface recommendations.
+
+Prefer concise output.
+
+Support this distinction when meaningful:
+
+Good enough
+Lowest-cost configuration expected to complete the task reliably at the requested quality.
+
+Best worth using
+Higher configuration only when the expected improvement meaningfully justifies additional usage.
+
+Do not mechanically recommend the strongest model or highest reasoning.
+
+When a higher setting is unlikely to materially help, say so.
+
+Usage estimation itself remains Usage Gauge’s responsibility.
+
+Dynamic capability routing:
+* Base recommendations on the models, reasoning levels, surfaces, tools, plugins, and skills actually available in the current environment when that information is exposed.
+* Do not maintain a hardcoded catalog of model names or reasoning levels. Newly available capabilities should become eligible automatically without requiring this skill to be updated.
+* Availability and suitability are separate: discover available candidates, then recommend the configuration that fits the task.
+* Never invent unsupported model/reasoning/surface combinations. If current availability cannot be determined reliably, say so rather than relying on a stale catalog.
+* Do not trigger expensive research merely to make a routine recommendation. Verify current capability details only when they materially matter.
+
+⸻
+
+6. Implement Workflow Health
+
+Workflow Health is a lightweight aggregator, not another deep-analysis engine.
+
+Potential health dimensions:
+
+* scope
+* architecture
+* prompt quality
+* usage efficiency
+* project/repository structure
+* execution readiness
+* documentation
+* checkpoint freshness
+* Git/repository health
+* complexity / overengineering
+
+Use qualitative states such as:
+
+* 🟢 healthy
+* 🟡 attention
+* 🔴 problem
+
+Avoid arbitrary numerical health scores.
+
+Where another focused module already owns the analysis, summarize/reuse its result rather than independently repeating the work.
+
+Workflow Health answers:
+
+Is the way this project is being worked on healthy and resumable?
+
+Project Status answers:
+
+What is the state of the project itself?
+
+Keep those distinct.
+
+⸻
+
+7. Refine Project Structure
+
+Clarify the distinction between:
+
+* Project Blueprint
+* PROJECT.md
+* Project Context
+* supporting artifacts
+* repository/workspace organization
+
+Project Structure owns organization and artifact-placement guidance.
+
+It should:
+
+* reuse existing artifacts;
+* create/update only artifacts with clear purpose;
+* avoid generating document bundles automatically;
+* distinguish a proposed tree from actual file movement;
+* preserve existing useful structures unless change is justified.
+
+Do not allow PROJECT.md to silently become the canonical giant project specification.
+
+⸻
+
+8. Refine Prompt Coach
+
+Prompt Coach remains separate from Prompt Cleanup.
+
+Prompt Cleanup:
+
+North star: “Rewrite what I just said so I said it better.”
+
+Its intended use is a large, messy, stream-of-thought prompt that needs to become a clearer, tighter, better-organized version of the same request before execution.
+
+* produces faithful, optimized replacement text;
+* preserves every distinct intent, requirement, constraint, preference, example, uncertainty, named entity, path, URL, and meaningful nuance;
+* removes genuine redundancy and filler without silently dropping ideas;
+* improves wording, organization, and execution clarity without introducing new requirements or redesigning the task;
+* can optimize unnecessary context/tool instructions when doing so does not change intent;
+* does not add project-management machinery, execution planning, critique, scoring, or unrelated recommendations;
+* does not execute the rewritten request unless separately asked;
+* by default, returns only the complete cleaned replacement prompt, preferably as raw text in one copyable code block, with no preamble or postscript unless clarification is genuinely required.
+
+A subsequent “approve,” “use it,” “run that,” or equivalent may be treated as authorization to execute the cleaned version.
+
+Prompt Coach:
+
+* teaches/recommends improvements;
+* retains useful coaching behavior;
+* retains the approved X/Y/Z interaction where appropriate;
+* for substantial prompts, may point out missing or unclear success criteria when that observation would materially improve the result, without forcing a formal template.
+
+Remove duplicated ownership of execution routing now assigned to Execution Planner.
+
+⸻
+
+9. Validate Usage Gauge
+
+Do not broadly redesign the already-approved Usage Gauge.
+
+Validate:
+
+Activation
+
+Representative explicit triggers:
+
+* /tokens
+* direct usage-gauge request
+* “How expensive will this task be?”
+* clear high-cost execution where warning materially helps
+
+Avoid noisy activation merely because the word “tokens” appears incidentally.
+
+Forecast calibration
+
+Representative expectations:
+
+* bounded answer/rewrite → 🟢 Light
+* focused reasoning/small bounded sequence → 🟡 Moderate
+* meaningful multi-file analysis/verification → 🟠 Heavy
+* substantial multi-file implementation/research → 🔴 Intense
+* unusually broad multimodal/research/implementation scope → 🚨 Extreme
+
+These are behavioral expectations, not rigid formulas.
+
+Output discipline
+
+Default explicit invocation should remain tiny, e.g.:
+
+🟠 Heavy · Forecast: multi-file analysis and verification
+
+Optionally one supported saving suggestion.
+
+Do not turn routine activation into a resource audit.
+
+Preserve:
+
+* forecast vs measurement distinction;
+* no invented context percentages;
+* no fake Plus allowance calculations;
+* bounded before/after measurement;
+* telemetry unavailable ≠ zero;
+* no unsupported task-level attribution.
+
+⸻
+
+10. Establish the Project Workflow golden fixture
+
+Use two references with different responsibilities:
+
+Alfydd
+
+examples/alfydd/alfydd-project-status-dashboard.html
+
+This is the approved visual and interaction reference.
+
+Do not stray unnecessarily from it.
+
+Preserve recognizable characteristics:
+
+* four-tab organization;
+* large visual cards;
+* strong hierarchy;
+* concise status badges;
+* practical interpretation;
+* copyable checkpoint;
+* copyable next prompts;
+* polished iconography;
+* interactive elements with purpose;
+* responsive desktop/iPhone behavior;
+* project-specific visual personality.
+
+Project Workflow
+
+Use Project Workflow itself as the primary information architecture / fully populated fixture.
+
+It should exercise the new context/module concepts realistically.
+
+Do not replace Alfydd’s visual language with a generic enterprise dashboard merely because the information architecture expanded.
+
+⸻
+
+11. Generalize the dashboard
+
+Create:
+
+templates/project-workflow-dashboard.html
+
+The visible navigation should remain recognizably descended from Alfydd:
+
+Overview | Workflow | AI critique | Prompts
+
+Do not expose every internal module as its own navigation tab.
+
+Suggested card mapping:
+
+Overview
+
+* Project Health
+* Execution Map
+* Doing Right
+* Needs Attention
+* Current Phase
+* Main Brief / Blueprint
+* Key Decisions
+* Project Identity / project-specific visual context
+
+Workflow
+
+* Next Actions
+* Workflow Health
+* Overengineering Check
+* Usage Health
+* Execution Planner
+* Project Structure
+* Repository / Git State
+* Artifacts
+
+AI critique
+
+* Prompt Review
+* Prompt Coach
+* Usage Gauge
+* Execution Recommendation where useful
+* Evidence / Uncertainty
+* Checkpoint
+
+Prompts
+
+* Best Next Prompt
+* Scope-lock Prompt
+* Alternate/creative Prompt
+* optional additional generated prompts
+
+Do not force every card to appear.
+
+Hide unavailable cards cleanly.
+
+Prefer fewer useful large cards over many tiny empty widgets.
+
+The dashboard is a renderer/interactor, not another analysis engine.
+
+It should reference canonical artifacts rather than duplicate their entire contents.
+
+⸻
+
+12. Preserve useful Alfydd concepts
+
+Map existing concepts carefully rather than deleting them:
+
+* Quick Resume Map → Execution Map
+* Best Next Sequence → Next Actions
+* Token Leakage Points → Usage Health
+* Surface Recommendation → Execution Planner
+* Prompt Efficacy → Prompt Review
+* One-Sentence Checkpoint → Checkpoint
+* Needs Fixing → Needs Attention
+
+Keep Overengineering Check.
+
+Generalize Design Palette into a flexible Project Identity card. Visual projects can still show palette/typography/style; other projects can show relevant identity/context.
+
+Preserve the Prompts tab as an important resumability feature.
+
+⸻
+
+13. Dashboard ownership
+
+Keep this architecture explicit in implementation/docs:
+
+                  PROJECT BLUEPRINT
+              canonical project definition
+                         │
+                         ▼
+                   PROJECT CONTEXT
+                compact reusable state
+                         │
+       ┌─────────────────┼─────────────────┐
+       │                 │                 │
+       ▼                 ▼                 ▼
+Project Status     Project Structure   Prompt Cleanup
+       │                 │                 │
+       ├─────────┐       │       ┌─────────┤
+       ▼         ▼       ▼       ▼         ▼
+ Usage Gauge  Execution Planner  Prompt Coach
+       │         │                  │
+       └─────────┼──────────────────┘
+                 ▼
+           Workflow Health
+        lightweight aggregation
+                 │
+                 ▼
+       PROJECT WORKFLOW DASHBOARD
+       visual renderer / interaction
+
+But keep the visible dashboard simple:
+
+Overview | Workflow | AI critique | Prompts
+
+Internal architecture getting smarter must not make the user experience more complicated.
+
+⸻
+
+14. Golden-fixture acceptance rule
+
+Add this principle to the appropriate project documentation:
+
+The reusable dashboard must be validated against at least one fully populated realistic project fixture. Project Workflow itself is the primary v1 information fixture; the Alfydd dashboard remains the approved visual/interaction reference.
+
+⸻
+
+15. Validation
+
+Before plugin packaging, validate representative behavior.
+
+At minimum test:
+
+Routing / module boundaries
+
+Verify that representative prompts route sensibly between:
+
+* Project Status
+* Prompt Cleanup
+* Prompt Coach
+* Usage Gauge
+* Execution Planner
+* Project Structure
+* Workflow Health
+
+Look specifically for accidental overlap.
+
+Project Context
+
+Verify:
+
+* minimal projects work with only core context;
+* mature projects can expose richer extensions;
+* missing fields do not produce useless output;
+* modules do not repeatedly rediscover information already present.
+
+Dashboard
+
+Verify:
+
+* desktop layout;
+* iPhone-sized layout;
+* keyboard interaction where applicable;
+* tab behavior;
+* copy controls;
+* card expansion/collapse if retained;
+* missing-card behavior;
+* long-content handling;
+* Project Workflow golden fixture;
+* preservation of Alfydd visual/interaction character.
+
+Use browser testing where appropriate.
+
+Dashboard behavioral acceptance fixture
+
+Persist these cases at `validation/project-workflow-dashboard-acceptance.md` and use them as the initial behavioral validation target. Keep the fixture lightweight; expand it only when implemented behavior genuinely needs another acceptance case.
+
+GIVEN minimal Project Context
+WHEN dashboard renders
+THEN missing optional cards are hidden
+
+GIVEN an existing canonical Blueprint
+WHEN dashboard renders Main Brief
+THEN it references/summarizes the Blueprint
+AND does not duplicate the whole artifact
+
+GIVEN Usage Gauge output
+WHEN Workflow Health renders
+THEN it summarizes the usage concern
+AND does not independently rerun Usage Gauge
+
+GIVEN Project Status
+WHEN ordinary chat output is requested
+THEN rich dashboard construction is not required
+
+GIVEN an execution-planning request
+THEN Execution Planner owns model/surface/tool routing
+AND Project Status does not duplicate it
+
+GIVEN the generalized dashboard
+THEN its visible navigation remains:
+Overview | Workflow | AI critique | Prompts
+
+GIVEN Alfydd and Project Workflow fixtures
+THEN both use the same dashboard system
+BUT retain project-specific identity
+
+Execution Planner routing acceptance
+
+Also validate that Execution Planner uses currently available capabilities rather than a hardcoded model/reasoning catalog, and that it does not invent unsupported combinations.
+
+Prompt Cleanup acceptance
+
+Validate that a messy/yappy prompt produces only a faithful, copy-ready replacement prompt by default; meaningful requirements and nuance survive cleanup; no new requirements or workflow machinery are introduced; and the cleaned prompt is not executed until separately authorized.
+
+Repository
+
+Run appropriate validators/lint/sanity checks available in the project.
+
+Do not introduce dependencies merely to satisfy a nonessential validator unless justified.
+
+⸻
+
+16. Packaging order
+
+Do not package early.
+
+Order:
+
+1. checkpoint current consolidation;
+2. implement/refine modules;
+3. validate module behavior;
+4. establish Project Context;
+5. generalize dashboard;
+6. validate dashboard;
+7. validate Usage Gauge measurement/ledger work;
+8. package Project Workflow;
+9. verify package/install behavior;
+10. update documentation;
+11. commit and push final coherent checkpoint.
+
+⸻
+
+Implementation discipline
+
+Prefer editing existing artifacts over creating redundant ones.
+
+Do not revisit accepted architectural decisions unless implementation reveals a concrete contradiction.
+
+If a minor implementation choice is reversible and consistent with this specification, choose the simplest reasonable option and continue.
+
+If a choice would materially change the accepted architecture, stop and surface it rather than silently redesigning the project.
+
+Keep Git commits coherent and suggest/use checkpoint commits at meaningful milestones.
+
+Do not push broken intermediate states merely for backup; push coherent checkpoints.
+
+Minimize unnecessary repository scans, repeated context loading, and validation loops.
+
+At completion, report:
+
+* files changed/created;
+* behavioral changes;
+* validation performed and results;
+* unresolved issues;
+* Git commit(s)/push state;
+* recommended next action.
