@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "session": "b429ef1b-bda7-4bfc-af30-fb39175cc281",
+  "revision": 8,
+  "phase": "review",
+  "layout": "focus",
+  "goal": "Create a low-overhead Project Workflow plugin with useful usage insight, focused skills and a reusable project dashboard.",
+  "decisions": [
+    {
+      "id": "priority",
+      "label": "First release priority",
+      "status": "answered",
+      "answer": "Refine all skills before packaging: finish usage-gauge first (prior suggestions approved), split Messy Material into Prompt Cleanup and Project Structure and refine Project Status per Compare Workflow Skills (approved), then perfect the HTML dashboard. Validate the Codex usage ledger and gauge before packaging.",
+      "depends_on": []
+    },
+    {
+      "id": "collection",
+      "label": "Measured usage collection",
+      "status": "answered",
+      "answer": "Substantial tasks automatically (recommended)",
+      "depends_on": [
+        "priority"
+      ]
+    },
+    {
+      "id": "prompt-coach",
+      "label": "Prompt Coach overlap",
+      "status": "answered",
+      "answer": "Keep two distinct skills",
+      "depends_on": [
+        "priority"
+      ]
+    },
+    {
+      "id": "structure-output",
+      "label": "Project Structure default",
+      "status": "answered",
+      "answer": "Create or update at least a PROJECT.md project brief from material already discussed. Reuse and update existing project artifacts. Suggest useful additional artifacts such as an implementation plan or workspace structure; do not create a dozen documents without purpose. Proposing workspace structure does not itself reorganize files.",
+      "depends_on": [
+        "priority"
+      ]
+    }
+  ],
+  "question": null,
+  "assumptions": [
+    "A reusable HTML template can be bundled with the plugin; exact packaging and distribution surfaces remain to be designed."
+  ],
+  "sources": [
+    "RESEARCH.md: verified local telemetry and official documentation",
+    "Three user-referenced conversations, read on 2026-09-16",
+    "PLAN.md records the approved sequence; skills/usage-gauge contains the first core draft.",
+    "Installed prompt-coach/SKILL.md inspected: prompt rewriting, model/tool recommendations and X/Y/Z refinement menu.",
+    "User chose separate Prompt Cleanup and Prompt Coach; reflected in PLAN.md and skills/prompt-cleanup/SKILL.md.",
+    "User specified minimal PROJECT.md creation/update; implemented as a draft skill and applied to this project."
+  ],
+  "brief": {
+    "outcome": "Refine the Project Workflow skills, then the HTML dashboard, then package the plugin.",
+    "included": [
+      "Finish Usage Gauge with automatic measurement for substantial tasks where available.",
+      "Keep Prompt Cleanup distinct from Prompt Coach.",
+      "Create or update a minimal PROJECT.md through Project Structure; reuse existing artifacts and suggest justified additions.",
+      "Refine Project Status and focused model/surface utilities.",
+      "Validate the ledger and dashboard before packaging."
+    ],
+    "excluded": [
+      "Unrequested workspace file moves or publishing.",
+      "Automatic background monitoring merely from installing a skill."
+    ],
+    "checks": [
+      "Distinct skill activation and outputs.",
+      "Faithful preservation of requirements.",
+      "Evidence-based status and honest measurement boundaries.",
+      "Desktop/mobile dashboard verification before packaging."
+    ],
+    "unresolved": [
+      "Latest actual HTML artifact still needs retrieval and inspection."
+    ]
+  },
+  "approval": null
+}

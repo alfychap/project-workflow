@@ -1,5 +1,9 @@
 # Project Workflow
 
-Private development workspace for workflow skills and a reusable project-status dashboard.
+Private development workspace for focused workflow skills and a reusable project-status dashboard.
 
-See PROJECT.md for scope and current status. Work in progress; not an installed release.
+Start with [PROJECT.md](PROJECT.md) for scope, decisions and current state. [PLAN.md](PLAN.md) records the implementation sequence; [RESEARCH.md](RESEARCH.md) preserves evidence and source references.
+
+Current drafts: Usage Gauge, Prompt Cleanup and Project Structure. These are not installed releases. The usage ledger, other utilities, final dashboard and plugin packaging are pending.
+
+The `work/grill-me/` directory preserves the planning interview. Its HTML is an interview snapshot, not the final dashboard template. Backups are point-in-time snapshots unless a separate sync workflow is configured.
