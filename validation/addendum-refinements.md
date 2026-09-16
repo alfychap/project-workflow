@@ -33,14 +33,14 @@ Input scenario:
 Expected behavior:
 
 - Return only the complete cleaned replacement prompt by default, preferably in one raw text code block.
-- Preserve every distinct intent, requirement, constraint, preference, uncertainty, path, named entity, output format, and meaningful nuance.
+- Preserve every distinct intent, requirement, constraint, preference, uncertainty, path, named entity, spreadsheet reference, Notes column instruction, output format, and meaningful nuance.
 - Improve organization and wording without adding requirements.
 - Do not critique the prompt, recommend a model, suggest a workflow, or execute the prompt.
 
 Failure examples:
 
 - Adds model/tool recommendations without being asked.
-- Drops "don't delete anything," duplicate handling, path details, or uncertainty.
+- Drops "don't delete anything," duplicate handling, path details, spreadsheet context, Notes column preservation, or uncertainty.
 - Adds a new backup strategy or output fields not implied by the source prompt.
 
 ## Prompt Coach

@@ -21,6 +21,7 @@ The approval covers the direction above; it is not a claim of completed implemen
 - Approved: Execution Planner is capability-based, not a hardcoded model/reasoning catalog. It discovers exposed surfaces, models, reasoning levels, tools, plugins and skills, then distinguishes good-enough from best-worth-using configurations without inventing unsupported combinations.
 - Execution Planner draft saved in `skills/execution-planner/SKILL.md`.
 - Addendum validation fixture saved in `validation/addendum-refinements.md`.
+- Representative addendum validation saved in `validation/addendum-validation-results.md`.
 
 - Usage Gauge core instructions drafted in skills/usage-gauge/SKILL.md.
 - Measurement integrity contract drafted; collector not implemented.
