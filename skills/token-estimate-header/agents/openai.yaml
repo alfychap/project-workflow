@@ -1,0 +1,7 @@
+interface:
+  display_name: "Token Estimate Header"
+  short_description: "Show rough token and context estimates"
+  brand_color: "#2563EB"
+  default_prompt: "Use $token-estimate-header to show a rough token/context estimate and warn before expensive work."
+policy:
+  allow_implicit_invocation: true

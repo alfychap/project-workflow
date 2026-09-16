@@ -1,0 +1,14 @@
+interface:
+  display_name: Prompt Coach
+  short_description: Polish prompts with useful next-step options
+  default_prompt: Use $prompt-coach to improve the prompt below and recommend the
+    right setup.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

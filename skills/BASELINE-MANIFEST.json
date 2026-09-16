@@ -1,0 +1,59 @@
+{
+  "captured_date": "2026-09-16",
+  "purpose": "Installed source baseline before workflow refinement; hashes describe the imported versions, not future edits.",
+  "excluded": [
+    ".DS_Store",
+    "__pycache__",
+    "*.pyc"
+  ],
+  "files": [
+    {
+      "path": "skills/rp-messy-material-to-useful-structure/SKILL.md",
+      "source": "/Users/alfyos/.codex/skills/rp-messy-material-to-useful-structure/SKILL.md",
+      "sha256": "0bee4695772197b83069d46d26f6b5815138bde81b79c08c3694df7f36ba0e56",
+      "bytes": 6222
+    },
+    {
+      "path": "skills/rp-project-status/README.md",
+      "source": "/Users/alfyos/.codex/skills/rp-project-status/README.md",
+      "sha256": "bcddc9a2b058b8d4c522eed4e9a8794d027112f69774bf4de3b6ff71d29120c2",
+      "bytes": 269
+    },
+    {
+      "path": "skills/rp-project-status/SKILL.md",
+      "source": "/Users/alfyos/.codex/skills/rp-project-status/SKILL.md",
+      "sha256": "1ade92e291263fd04840fb9636666d085c5b142371156fa83fac19f894bc26f8",
+      "bytes": 8323
+    },
+    {
+      "path": "skills/prompt-coach/SKILL.md",
+      "source": "/Users/alfyos/.codex/skills/prompt-coach/SKILL.md",
+      "sha256": "3b295e650f921b366f7b37ef0ac8e3cc8693ef694452c38df93584a4e55ff1ad",
+      "bytes": 4838
+    },
+    {
+      "path": "skills/prompt-coach/agents/openai.yaml",
+      "source": "/Users/alfyos/.codex/skills/prompt-coach/agents/openai.yaml",
+      "sha256": "fae1c8bf50c396ff8a7493d7525751e574a099ef6f290023b2391e13daadee0b",
+      "bytes": 359
+    },
+    {
+      "path": "skills/prompt-coach/assets/icon.svg",
+      "source": "/Users/alfyos/.codex/skills/prompt-coach/assets/icon.svg",
+      "sha256": "49315dda7125ec5fc77ef5f2b96126d8b2121c6e72944b4702972e90f321d3ee",
+      "bytes": 1210
+    },
+    {
+      "path": "skills/token-estimate-header/SKILL.md",
+      "source": "/Users/alfyos/.codex/skills/token-estimate-header/SKILL.md",
+      "sha256": "06a744591cd99c5c1ffb8c43bc5c811b1c24fc2c234857df154521d5b4c90f86",
+      "bytes": 3680
+    },
+    {
+      "path": "skills/token-estimate-header/agents/openai.yaml",
+      "source": "/Users/alfyos/.codex/skills/token-estimate-header/agents/openai.yaml",
+      "sha256": "eef34a5afb45fe4b9a75ca128ef6c88177ef49e835602f0e199bdab32ba9cafe",
+      "bytes": 298
+    }
+  ]
+}

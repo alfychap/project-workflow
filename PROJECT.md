@@ -17,7 +17,9 @@ Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [
 
 The usage measurement contract is written; a deterministic ledger collector and historical validation remain pending. The bundled skill validator has not run successfully because its Python environment lacks PyYAML.
 
-Project Status, focused model/surface utilities, the final HTML template and plugin package remain unfinished. The latest actual HTML must still be obtained and inspected; the source conversation alone is not the artifact.
+Installed baselines for Messy Material, Project Status, Prompt Coach and Token Estimate Header are now copied under their original names in `skills/`, including supporting assets and agent metadata. `skills/BASELINE-MANIFEST.json` records import provenance and hashes; [BACKUPS.md](BACKUPS.md) records coverage and snapshot limits. The earlier Drive/Notion snapshot lacks these imports and still needs a manual refresh.
+
+Project Status refinement, focused model/surface utilities, the final HTML template and plugin package remain unfinished. The latest actual HTML must still be obtained and inspected; the source conversation alone is not the artifact.
 
 ## Completion criteria
 
