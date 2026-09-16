@@ -15,6 +15,7 @@ Use already available context. Do not scan files, fetch histories, browse, or in
 - 🟡 Moderate: focused reasoning or a small, bounded sequence of steps.
 - 🟠 Heavy: substantial material or several meaningful execution/verification steps.
 - 🔴 Intense: broad research, large analysis or sustained implementation with substantial iteration.
+- 🚨 Extreme: unusually broad multimodal, research and implementation scope where the work should be split or explicitly approved.
 
 These are relative qualitative forecasts, not calibrated allowance bands. Do not call Light free or negligible. Do not assign a high level solely because work involves coding, tools or a long prompt.
 
@@ -29,7 +30,7 @@ Otherwise omit trivial turns and show the gauge only when it helps a real execut
 
 ## Before costly execution
 
-Heavy and Intense work get a compact pre-work warning when the user has not already authorized that scope after a warning. Name the main driver and one lower-cost path. Honor existing approval; do not repeatedly gate the same work. A material scope expansion can justify a new warning. The initial prompt has already been processed; this warning protects subsequent execution only.
+Heavy, Intense and Extreme work get a compact pre-work warning when the user has not already authorized that scope after a warning. Name the main driver and one lower-cost path. Honor existing approval; do not repeatedly gate the same work. A material scope expansion can justify a new warning. The initial prompt has already been processed; this warning protects subsequent execution only.
 
 Do not estimate context-window percentages. Mention context only when it contributes meaningfully and identify the evidence or uncertainty. Do not switch models, surfaces, tools or scope without the appropriate user direction.
 

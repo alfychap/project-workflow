@@ -15,7 +15,7 @@ Create a low-overhead set of reusable skills that clarify prompts, organize proj
 
 ## Current state
 
-Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Project Checkpoint](skills/project-checkpoint/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md), [Execution Planner](skills/execution-planner/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). The accepted addendum checks are captured in [validation/addendum-refinements.md](validation/addendum-refinements.md). These are not installed or behaviorally validated replacements.
+Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Project Checkpoint](skills/project-checkpoint/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md), [Execution Planner](skills/execution-planner/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). The accepted addendum checks are captured in [validation/addendum-refinements.md](validation/addendum-refinements.md). Usage Gauge and Project Checkpoint validation is captured in [validation/usage-gauge-project-checkpoint-validation.md](validation/usage-gauge-project-checkpoint-validation.md). These are not installed replacements yet.
 
 The usage measurement contract is written; a deterministic ledger collector and historical validation remain pending. The bundled skill validator has not run successfully because its Python environment lacks PyYAML.
 
@@ -35,4 +35,4 @@ Project Status refinement and the plugin package remain unfinished. The latest A
 
 [PLAN.md](PLAN.md) tracks the approved sequence; [RESEARCH.md](RESEARCH.md) records source conversations, telemetry evidence and limitations. The accepted consolidated blueprint is [docs/project-workflow-v1-accepted-blueprint.md](docs/project-workflow-v1-accepted-blueprint.md), and the implementation handoff prompt is [handoff/codex-implementation-handoff.md](handoff/codex-implementation-handoff.md). Interview decisions are stored in work/grill-me/state.json.
 
-Next: validate Usage Gauge and Project Checkpoint behavior against representative prompts, then continue the remaining skill refinements in the approved sequence.
+Next: continue the remaining skill refinements in the approved sequence, then bind the dashboard template to real Project Context outputs before packaging.
