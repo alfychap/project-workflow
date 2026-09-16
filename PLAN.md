@@ -26,7 +26,7 @@ The approval covers the direction above; it is not a claim of completed implemen
 - Usage Gauge core instructions drafted in skills/usage-gauge/SKILL.md.
 - Measurement integrity contract drafted; collector not implemented.
 - Approved collection: Heavy/Intense/Extreme automatically when the skill is active and telemetry is available; smaller tasks only on explicit measurement requests. Use bounded before/after observations, not background polling.
-- Latest Alfydd dashboard HTML sourced from Google Drive and saved under `examples/alfydd/` as a design seed. Generalized static dashboard template saved at `templates/project-workflow-dashboard.html`; static review saved at `validation/dashboard-template-static-review.md`. Next verify desktop/mobile rendering and interactions before packaging.
+- Latest Alfydd dashboard HTML sourced from Google Drive and saved under `examples/alfydd/` as a design seed. Generalized static dashboard template saved at `templates/project-workflow-dashboard.html`; desktop/iPhone rendering and interactions are recorded in `validation/dashboard-template-static-review.md`. Next bind the template to real Project Context outputs before packaging.
 
 ## Accepted blueprint
 
