@@ -32,6 +32,12 @@ Checked:
 - Scratchpad saves to and clears local browser storage.
 - Copy buttons show `Copied`; handler includes a fallback and `Copy unavailable` state if the browser blocks clipboard access.
 
+Post-binding QA:
+
+- Initial Project Context binding is tracked in `validation/project-workflow-dashboard-acceptance.md`.
+- The bound fixture loaded in the in-app browser with no current-viewport horizontal overflow.
+- A Chrome headless 390 by 844 screenshot verified the mobile first viewport after fixing hero text wrapping.
+
 Remaining risk:
 
-- This is still a static HTML template with sample data. Real project binding to Project Context remains future work.
+- The dashboard is still a static HTML renderer with an example JSON fixture. Packaging should decide whether this fixture remains documentation-only or becomes part of a formal template API.

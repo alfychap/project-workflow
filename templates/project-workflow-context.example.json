@@ -1,0 +1,242 @@
+{
+  "identity": {
+    "name": "Project Workflow",
+    "shortName": "PW",
+    "kicker": "Reusable project state",
+    "repository": "alfychap/project-workflow",
+    "surface": "Codex plugin workspace"
+  },
+  "summary": {
+    "headline": "Make the project easy to resume.",
+    "description": "A compact dashboard renderer for project state, evidence, risks, workflow health, skill outputs, and the next action.",
+    "checkpointLabel": "Checkpoint · Project Context fixture",
+    "checkpointText": "Project: Project Workflow. Phase: Build. Status: dashboard template is generalized and ready for Project Context binding. Evidence: PROJECT.md, PLAN.md, docs/project-workflow-v1-accepted-blueprint.md, validation/dashboard-template-static-review.md. Next action: bind the dashboard renderer to compact context data.",
+    "footerNext": "Bind dashboard cards to real Project Context outputs before plugin packaging."
+  },
+  "health": {
+    "score": 78,
+    "label": "building",
+    "items": [
+      {
+        "tone": "green",
+        "title": "State is resumable.",
+        "text": "The project has a compact objective, accepted module boundaries, current phase, and next action."
+      },
+      {
+        "tone": "gold",
+        "title": "Risk is drift.",
+        "text": "Keep the dashboard as a renderer of Project Context rather than a second source of truth."
+      },
+      {
+        "tone": "coral",
+        "title": "Needs binding evidence.",
+        "text": "Dashboard cards should now read structured context instead of only sample copy."
+      }
+    ]
+  },
+  "context": {
+    "Identity": "Project Workflow; private repository workspace for focused skills and a reusable status dashboard.",
+    "Purpose": "Reduce repeated context, clarify prompts, preserve project state, and make the next action obvious.",
+    "Phase": "Build",
+    "Status": "Draft skills exist; static dashboard QA is complete; real Project Context binding is the current milestone.",
+    "Goals": "Refine focused skills, bind dashboard rendering, validate behavior, then package as a plugin.",
+    "Scope": "Usage Gauge, Project Checkpoint, Prompt Cleanup, Execution Planner, Project Structure, Project Status, Workflow Health, reusable dashboard.",
+    "Constraints": "Local-first evidence, compact checkpoints, no hardcoded model catalog, no dashboard-as-source-of-truth.",
+    "Checkpoint": "main at 018eee8 after dashboard merge and Project Checkpoint/Usage Gauge updates."
+  },
+  "workflowInputs": [
+    {
+      "title": "Blueprint",
+      "text": "Purpose, scope, constraints, architecture, success criteria."
+    },
+    {
+      "title": "Checkpoint",
+      "text": "Current phase, completed work, open risk, next action."
+    },
+    {
+      "title": "Evidence",
+      "text": "Files, commits, screenshots, measurements, user decisions."
+    }
+  ],
+  "executionMap": [
+    {
+      "label": "Now",
+      "title": "Bind the template.",
+      "text": "Render dashboard sections from Project Context data while keeping static fallback copy."
+    },
+    {
+      "label": "Next",
+      "title": "Validate behavior.",
+      "text": "Exercise minimal and populated fixtures, copy controls, tabs, mobile layout, and missing-card behavior."
+    },
+    {
+      "label": "Later",
+      "title": "Package the plugin.",
+      "text": "Package only after skills, dashboard binding, usage ledger, and validation are complete."
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "tone": "green",
+      "text": "Dashboard renders compact Project Context without duplicating the whole blueprint."
+    },
+    {
+      "tone": "green",
+      "text": "Missing optional fields hide their cards rather than showing empty filler."
+    },
+    {
+      "tone": "gold",
+      "text": "Residual risks and pending external coverage remain explicit."
+    },
+    {
+      "tone": "violet",
+      "text": "A future continuation can start from the dashboard and checkpoint without rereading long history."
+    }
+  ],
+  "skillOutputs": [
+    {
+      "badge": "Project Status",
+      "tone": "cool",
+      "title": "Owns",
+      "text": "Phase, progress, blocker, definition of done, execution map, evidence, checkpoint, next action."
+    },
+    {
+      "badge": "Prompt Cleanup",
+      "tone": "good",
+      "title": "Owns",
+      "text": "Faithful cleaned replacement prompt only by default; no critique or execution unless asked."
+    },
+    {
+      "badge": "Usage Gauge",
+      "tone": "warn",
+      "title": "Owns",
+      "text": "Fuzzy intensity, biggest likely cost driver, one practical optimization, useful post-session audits."
+    },
+    {
+      "badge": "Execution Planner",
+      "tone": "weird",
+      "title": "Owns",
+      "text": "Capability-based surface, model, reasoning, tool, plugin, and skill route."
+    },
+    {
+      "badge": "Project Structure",
+      "tone": "good",
+      "title": "Owns",
+      "text": "Folders, artifact placement, docs, Git workflow, checkpoints, archive strategy, concise PROJECT.md."
+    },
+    {
+      "badge": "Prompt Coach",
+      "tone": "cool",
+      "title": "Owns",
+      "text": "Coaching format, destination and tool recommendations, X/Y/Z refinements, success-criteria nudges."
+    }
+  ],
+  "sequence": [
+    {
+      "move": "Confirm state",
+      "purpose": "Verify the current project phase, completed work, and open risks.",
+      "owner": "Project Status"
+    },
+    {
+      "move": "Plan execution",
+      "purpose": "Choose surface, model, reasoning, tools, plugins, and skills from available capabilities.",
+      "owner": "Execution Planner"
+    },
+    {
+      "move": "Reduce waste",
+      "purpose": "Estimate qualitative usage intensity and identify one safe saving move.",
+      "owner": "Usage Gauge"
+    },
+    {
+      "move": "Checkpoint",
+      "purpose": "Commit, save, or hand off only after validation evidence is recorded.",
+      "owner": "Project Checkpoint"
+    }
+  ],
+  "workflowHealth": [
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Scope",
+      "text": "Clear current milestone and explicit exclusions."
+    },
+    {
+      "badge": "attention",
+      "tone": "warn",
+      "title": "Usage",
+      "text": "Watch context-heavy rereads and broad undirected passes."
+    },
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Structure",
+      "text": "Artifacts have a place and checkpoints are named."
+    },
+    {
+      "badge": "problem",
+      "tone": "risk",
+      "title": "Evidence gap",
+      "text": "Any completion claim without a source should be repaired."
+    },
+    {
+      "badge": "attention",
+      "tone": "warn",
+      "title": "Prompt quality",
+      "text": "Success criteria may need sharpening on large prompts."
+    },
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Execution",
+      "text": "Available capabilities are routed before work begins."
+    }
+  ],
+  "usageGauge": {
+    "intensity": "Moderate to Heavy",
+    "value": 62,
+    "driver": "multi-section dashboard review and visual QA, not raw prompt length.",
+    "savingMove": "Start from the current checkpoint and targeted screenshots before rereading old chats."
+  },
+  "evidence": [
+    {
+      "claim": "Dashboard exists",
+      "source": "templates/project-workflow-dashboard.html",
+      "confidence": "High"
+    },
+    {
+      "claim": "Seed preserved",
+      "source": "examples/alfydd/alfydd-project-status-dashboard.html",
+      "confidence": "High"
+    },
+    {
+      "claim": "Skill boundaries accepted",
+      "source": "docs/project-workflow-v1-accepted-blueprint.md",
+      "confidence": "High"
+    },
+    {
+      "claim": "Visual QA complete",
+      "source": "validation/dashboard-template-static-review.md",
+      "confidence": "High"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Validate current dashboard binding",
+      "tone": "good",
+      "label": "best",
+      "text": "Review the Project Workflow dashboard with the included Project Context fixture. Verify minimal and populated rendering, missing-card behavior, tabs, copy controls, and mobile layout."
+    },
+    {
+      "title": "Update project checkpoint",
+      "tone": "warn",
+      "label": "scope lock",
+      "text": "Using the current project evidence, update PROJECT.md with purpose, confirmed decisions, current state, completion criteria, sources, and next action. Keep it compact."
+    },
+    {
+      "title": "Prepare plugin handoff",
+      "tone": "weird",
+      "label": "handoff",
+      "text": "Create a concise handoff note for this project with objective, completed work, constraints, files changed, validation run, and exact next task."
+    }
+  ]
+}

@@ -21,7 +21,7 @@ The usage measurement contract is written; a deterministic ledger collector and 
 
 Installed baselines for Messy Material, Project Status, Prompt Coach and Token Estimate Header are now copied under their original names in `skills/`, including supporting assets and agent metadata. `skills/BASELINE-MANIFEST.json` records import provenance and hashes; [BACKUPS.md](BACKUPS.md) records coverage and snapshot limits. The earlier Drive/Notion snapshot lacks these imports and still needs a manual refresh.
 
-Project Status refinement and the plugin package remain unfinished. The latest Alfydd dashboard HTML has been recovered from Google Drive and saved as [examples/alfydd/alfydd-project-status-dashboard.html](examples/alfydd/alfydd-project-status-dashboard.html). A generalized static dashboard template now lives at [templates/project-workflow-dashboard.html](templates/project-workflow-dashboard.html), with desktop/iPhone browser QA recorded in [validation/dashboard-template-static-review.md](validation/dashboard-template-static-review.md).
+Project Status refinement and the plugin package remain unfinished. The latest Alfydd dashboard HTML has been recovered from Google Drive and saved as [examples/alfydd/alfydd-project-status-dashboard.html](examples/alfydd/alfydd-project-status-dashboard.html). A generalized dashboard template now lives at [templates/project-workflow-dashboard.html](templates/project-workflow-dashboard.html), with desktop/iPhone static-template browser QA recorded in [validation/dashboard-template-static-review.md](validation/dashboard-template-static-review.md). Initial Project Context binding uses [templates/project-workflow-context.example.json](templates/project-workflow-context.example.json) and has bound-fixture browser checks in [validation/project-workflow-dashboard-acceptance.md](validation/project-workflow-dashboard-acceptance.md).
 
 ## Completion criteria
 
@@ -35,4 +35,4 @@ Project Status refinement and the plugin package remain unfinished. The latest A
 
 [PLAN.md](PLAN.md) tracks the approved sequence; [RESEARCH.md](RESEARCH.md) records source conversations, telemetry evidence and limitations. The accepted consolidated blueprint is [docs/project-workflow-v1-accepted-blueprint.md](docs/project-workflow-v1-accepted-blueprint.md), and the implementation handoff prompt is [handoff/codex-implementation-handoff.md](handoff/codex-implementation-handoff.md). Interview decisions are stored in work/grill-me/state.json.
 
-Next: continue the remaining skill refinements in the approved sequence, then bind the dashboard template to real Project Context outputs before packaging.
+Next: continue the remaining skill refinements in the approved sequence, validate the usage ledger and finalize plugin packaging.

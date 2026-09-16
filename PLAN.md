@@ -27,7 +27,7 @@ The approval covers the direction above; it is not a claim of completed implemen
 - Project Checkpoint drafted in `skills/project-checkpoint/SKILL.md`; it merges Working Set into a compact continuation checkpoint and treats approved decisions as settled.
 - Usage Gauge and Project Checkpoint validation saved in `validation/usage-gauge-project-checkpoint-validation.md`; the gauge now includes the accepted Extreme level and the dashboard checkpoint label matches the accepted terminology.
 - Measurement integrity contract drafted; collector not implemented. Measurement remains distinct from forecast and is not part of the lightweight default gauge.
-- Latest Alfydd dashboard HTML sourced from Google Drive and saved under `examples/alfydd/` as a design seed. Generalized static dashboard template saved at `templates/project-workflow-dashboard.html`; desktop/iPhone rendering and interactions are recorded in `validation/dashboard-template-static-review.md`. Next bind the template to real Project Context outputs before packaging.
+- Latest Alfydd dashboard HTML sourced from Google Drive and saved under `examples/alfydd/` as a design seed. Generalized dashboard template saved at `templates/project-workflow-dashboard.html`; desktop/iPhone static rendering and interactions are recorded in `validation/dashboard-template-static-review.md`. Initial Project Context binding now uses `templates/project-workflow-context.example.json` and is tracked in `validation/project-workflow-dashboard-acceptance.md`; bound-fixture browser QA has passed for current desktop and a 390 by 844 mobile screenshot.
 
 ## Accepted blueprint
 

@@ -27,6 +27,7 @@
       margin: 0;
       min-height: 100vh;
       color: var(--ink);
+      overflow-x: hidden;
       background:
         radial-gradient(circle at 9% 10%, rgba(79, 124, 255, .24), transparent 28%),
         radial-gradient(circle at 85% 6%, rgba(142, 220, 109, .28), transparent 27%),
@@ -113,6 +114,7 @@
       background: rgba(255, 249, 234, .9);
       box-shadow: var(--shadow);
       overflow: hidden;
+      min-width: 0;
     }
 
     .hero-main {
@@ -141,8 +143,10 @@
 
     .hero-copy {
       position: relative;
+      width: 100%;
       max-width: 760px;
       z-index: 1;
+      min-width: 0;
     }
 
     .hero-copy h2 {
@@ -150,6 +154,7 @@
       line-height: .86;
       letter-spacing: 0;
       max-width: 860px;
+      overflow-wrap: break-word;
     }
 
     .hero-copy p {
@@ -158,6 +163,7 @@
       color: rgba(255,255,255,.78);
       font-size: 1.05rem;
       line-height: 1.5;
+      overflow-wrap: break-word;
     }
 
     .hero-actions {
@@ -666,7 +672,9 @@
       .shell { width: min(100% - 20px, 1480px); padding-top: 14px; }
       .topbar { align-items: flex-start; flex-direction: column; }
       .hero-main { min-height: 430px; padding: 18px; }
-      .hero-copy h2 { font-size: 2.65rem; }
+      .hero-copy { max-width: min(100%, 320px); }
+      .hero-copy h2 { font-size: 1.95rem; line-height: 1.02; max-width: 320px; }
+      .hero-copy p { font-size: .98rem; max-width: 320px; }
       .scoreboard { grid-template-columns: 1fr; }
       .score { border-right: 0; border-bottom: 2px solid var(--ink); }
       .score:last-child { border-bottom: 0; }
@@ -682,21 +690,21 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">PW</div>
+        <div class="brand-mark" id="brand-mark">PW</div>
         <div>
           <p class="kicker">Project workflow</p>
-          <h1>project checkpoint</h1>
+          <h1 id="project-name">project checkpoint</h1>
         </div>
       </div>
-      <div class="date-pill">Checkpoint · Replace with date</div>
+      <div class="date-pill" id="checkpoint-pill">Checkpoint · Replace with date</div>
     </header>
 
     <section class="hero">
       <article class="panel hero-main">
         <div class="hero-copy">
-          <p class="kicker" style="color:rgba(255,255,255,.7)">Reusable project state</p>
-          <h2>Make the project easy to resume.</h2>
-          <p>This template turns a project checkpoint into a quick-glance dashboard: current state, evidence, risks, workflow health, and the next prompts or actions.</p>
+          <p class="kicker" id="project-kicker" style="color:rgba(255,255,255,.7)">Reusable project state</p>
+          <h2 id="hero-headline">Make the project easy to resume.</h2>
+          <p id="hero-description">This template turns a project checkpoint into a quick-glance dashboard: current state, evidence, risks, workflow health, and the next prompts or actions.</p>
         </div>
         <div class="hero-actions">
           <button class="action" data-tab-target="overview">Open status</button>
@@ -707,8 +715,8 @@
 
       <aside class="panel hero-side">
         <div class="scoreboard">
-          <div class="score"><b>7</b><span>Workflow inputs</span></div>
-          <div class="score"><b>6</b><span>Skill modules</span></div>
+          <div class="score"><b id="workflow-input-count">7</b><span>Workflow inputs</span></div>
+          <div class="score"><b id="skill-module-count">6</b><span>Skill modules</span></div>
           <div class="score"><b>3</b><span>Action lenses</span></div>
         </div>
         <div class="brief">
@@ -735,10 +743,10 @@
       </div>
 
       <article class="card span-5">
-        <h3>Project Health <span class="badge good">steady</span></h3>
+        <h3>Project Health <span class="badge good" id="health-label">steady</span></h3>
         <div class="card-body metric-ring">
-          <div class="ring"><strong>72</strong></div>
-          <ul class="list">
+          <div class="ring"><strong id="health-score">72</strong></div>
+          <ul class="list" id="health-list">
             <li><span class="dot green"></span><span><b>State is resumable.</b> The project has a compact objective, phase, and next action.</span></li>
             <li><span class="dot gold"></span><span><b>Risk is drift.</b> Watch for scope expansion beyond the accepted architecture or current milestone.</span></li>
             <li><span class="dot coral"></span><span><b>Needs evidence.</b> Keep claims tied to files, commits, screenshots, measurements, or user decisions.</span></li>
@@ -749,7 +757,7 @@
       <article class="card span-7">
         <h3>Execution Map <span class="badge cool">primary</span></h3>
         <div class="card-body">
-          <div class="timeline">
+          <div class="timeline" id="execution-map">
             <div class="step">
               <div class="step-time">Now</div>
               <div class="step-card"><b>Current checkpoint.</b> Replace with what exists now and the evidence that proves it.</div>
@@ -783,7 +791,7 @@
       <article class="card span-6">
         <h3>Workflow Inputs <span class="badge cool">coverage</span></h3>
         <div class="card-body">
-          <div class="mini-grid">
+          <div class="mini-grid" id="workflow-inputs">
             <div class="mini-card"><b>Blueprint</b><span>Purpose, scope, constraints, architecture, success criteria.</span></div>
             <div class="mini-card"><b>Checkpoint</b><span>Current phase, completed work, open risk, next action.</span></div>
             <div class="mini-card"><b>Evidence</b><span>Files, commits, screenshots, measurements, user decisions.</span></div>
@@ -806,7 +814,7 @@
     <section id="context" class="tab-panel grid hidden">
       <article class="card span-12">
         <h3>Project Context <span class="badge cool">shared state</span></h3>
-        <div class="card-body fields">
+        <div class="card-body fields" id="project-context-fields">
           <div class="field"><b>Identity</b><span>[Project name], repository, owner, destination surface.</span></div>
           <div class="field"><b>Purpose</b><span>The reason this project exists and the user outcome it supports.</span></div>
           <div class="field"><b>Phase</b><span>Explore, Plan, Design, Build, Verify, Deploy, Maintain, or Archive.</span></div>
@@ -821,7 +829,7 @@
       <article class="card span-7">
         <h3>Definition of Done <span class="badge good">exit signal</span></h3>
         <div class="card-body">
-          <ul class="list">
+          <ul class="list" id="done-list">
             <li><span class="dot green"></span><span>Required deliverables exist in the expected location.</span></li>
             <li><span class="dot green"></span><span>Validation evidence is linked or summarized.</span></li>
             <li><span class="dot gold"></span><span>Residual risks and pending external coverage are explicitly named.</span></li>
@@ -846,10 +854,10 @@
     <section id="modules" class="tab-panel grid hidden">
       <article class="card span-12">
         <h3>Skill Output Matrix <span class="badge cool">agglomeration</span></h3>
-        <div class="card-body module-grid">
+        <div class="card-body module-grid" id="skill-output-matrix">
           <div class="module"><span class="badge cool">Project Status</span><b>Owns</b><span>Phase, progress, blocker, definition of done, Execution Map, evidence, checkpoint, next action.</span></div>
           <div class="module"><span class="badge good">Prompt Cleanup</span><b>Owns</b><span>Faithful cleaned replacement prompt only by default; no critique or execution unless asked.</span></div>
-          <div class="module"><span class="badge warn">Usage Gauge</span><b>Owns</b><span>Light to Extreme intensity, usage driver, high-cost warning, one quality-preserving saving move.</span></div>
+          <div class="module"><span class="badge warn">Usage Gauge</span><b>Owns</b><span>Light to Intense fuzzy intensity, biggest likely cost driver, one practical optimization, useful post-session audits.</span></div>
           <div class="module"><span class="badge weird">Execution Planner</span><b>Owns</b><span>Capability-based surface, model, reasoning, tool, plugin, and skill route.</span></div>
           <div class="module"><span class="badge good">Project Structure</span><b>Owns</b><span>Folders, artifact placement, docs, Git workflow, checkpoints, archive strategy, concise PROJECT.md.</span></div>
           <div class="module"><span class="badge cool">Prompt Coach</span><b>Owns</b><span>Coaching format, destination and tool recommendations, X/Y/Z refinements, success-criteria nudges.</span></div>
@@ -885,7 +893,7 @@
             <thead>
               <tr><th>Move</th><th>Purpose</th><th>Owner</th></tr>
             </thead>
-            <tbody>
+            <tbody id="next-sequence">
               <tr><td>Confirm state</td><td>Verify the current project phase, completed work, and open risks.</td><td>Project Status</td></tr>
               <tr><td>Plan execution</td><td>Choose surface, model, reasoning, tools, plugins, and skills from available capabilities.</td><td>Execution Planner</td></tr>
               <tr><td>Reduce waste</td><td>Estimate qualitative usage intensity and identify one safe saving move.</td><td>Usage Gauge</td></tr>
@@ -898,7 +906,7 @@
       <article class="card span-12">
         <h3>Workflow Map <span class="badge cool">milestones</span></h3>
         <div class="card-body">
-          <div class="timeline">
+          <div class="timeline" id="workflow-map">
             <div class="step"><div class="step-time">●</div><div class="step-card"><b>Completed milestone.</b> Evidence-backed work that should not be re-litigated.</div></div>
             <div class="step"><div class="step-time">◉</div><div class="step-card"><b>Current work.</b> The one milestone active right now, with an exit condition.</div></div>
             <div class="step"><div class="step-time">○</div><div class="step-card"><b>Upcoming milestone.</b> The next meaningful continuation after the current work is validated.</div></div>
@@ -945,7 +953,7 @@
     <section id="health" class="tab-panel grid hidden">
       <article class="card span-12">
         <h3>Workflow Health <span class="badge warn">aggregator</span></h3>
-        <div class="card-body health-board">
+        <div class="card-body health-board" id="health-board">
           <div class="health-tile"><span class="badge good">healthy</span><strong>Scope</strong><span>Clear current milestone and explicit exclusions.</span></div>
           <div class="health-tile"><span class="badge warn">attention</span><strong>Usage</strong><span>Watch context-heavy rereads and broad undirected passes.</span></div>
           <div class="health-tile"><span class="badge good">healthy</span><strong>Structure</strong><span>Artifacts have a place and checkpoints are named.</span></div>
@@ -972,10 +980,10 @@
         <h3>Usage Gauge <span class="badge warn">qualitative</span></h3>
         <div class="card-body">
           <div class="meter">
-            <b>Representative intensity: Moderate to Heavy</b>
-            <div class="meter-track"><div class="meter-fill" style="--value: 62%"></div></div>
-            <span>Main driver: multi-section dashboard review and visual QA, not raw prompt length.</span>
-            <span>Saving move: start from the current checkpoint and targeted screenshots before rereading old chats.</span>
+            <b id="usage-intensity">Representative intensity: Moderate to Heavy</b>
+            <div class="meter-track"><div class="meter-fill" id="usage-meter-fill" style="--value: 62%"></div></div>
+            <span id="usage-driver">Main driver: multi-section dashboard review and visual QA, not raw prompt length.</span>
+            <span id="usage-saving">Saving move: start from the current checkpoint and targeted screenshots before rereading old chats.</span>
           </div>
         </div>
       </article>
@@ -994,11 +1002,15 @@
         <h3>Evidence Ledger <span class="badge cool">source-backed</span></h3>
         <div class="card-body">
           <table class="table">
-            <tr><th>Claim</th><th>Evidence</th><th>Confidence</th></tr>
-            <tr><td>Dashboard exists</td><td><code>templates/project-workflow-dashboard.html</code></td><td>High</td></tr>
-            <tr><td>Seed preserved</td><td><code>examples/alfydd/alfydd-project-status-dashboard.html</code></td><td>High</td></tr>
-            <tr><td>Skill boundaries accepted</td><td><code>docs/project-workflow-v1-accepted-blueprint.md</code></td><td>High</td></tr>
-            <tr><td>Visual QA complete</td><td><code>validation/dashboard-template-static-review.md</code></td><td>High</td></tr>
+            <thead>
+              <tr><th>Claim</th><th>Evidence</th><th>Confidence</th></tr>
+            </thead>
+            <tbody id="evidence-ledger">
+              <tr><td>Dashboard exists</td><td><code>templates/project-workflow-dashboard.html</code></td><td>High</td></tr>
+              <tr><td>Seed preserved</td><td><code>examples/alfydd/alfydd-project-status-dashboard.html</code></td><td>High</td></tr>
+              <tr><td>Skill boundaries accepted</td><td><code>docs/project-workflow-v1-accepted-blueprint.md</code></td><td>High</td></tr>
+              <tr><td>Visual QA complete</td><td><code>validation/dashboard-template-static-review.md</code></td><td>High</td></tr>
+            </tbody>
           </table>
         </div>
       </article>
@@ -1025,6 +1037,7 @@
     </section>
 
     <section id="prompts" class="tab-panel grid hidden">
+      <div id="prompt-cards" class="span-12 grid">
       <article class="card span-4">
         <h3>Next Prompt 1 <span class="badge good">best</span></h3>
         <div class="card-body prompt">
@@ -1048,15 +1061,297 @@
           <button class="copy" data-copy="Create a concise handoff note for this project with objective, completed work, constraints, files changed, validation run, and exact next task.">Copy prompt</button>
         </div>
       </article>
+      </div>
     </section>
 
     <footer class="footer">
-      <strong>Project: [name] · Phase: [phase]</strong>
-      <span>Next: replace with the single best continuation.</span>
+      <strong id="footer-state">Project: [name] · Phase: [phase]</strong>
+      <span id="footer-next">Next: replace with the single best continuation.</span>
     </footer>
   </main>
 
   <script>
+    const toneClass = {
+      green: 'green',
+      gold: 'gold',
+      coral: 'coral',
+      violet: 'violet',
+      good: 'good',
+      warn: 'warn',
+      risk: 'risk',
+      cool: 'cool',
+      weird: 'weird'
+    };
+
+    function text(id, value, prefix = '') {
+      const node = document.getElementById(id);
+      if (node && value !== undefined && value !== null && value !== '') node.textContent = `${prefix}${value}`;
+    }
+
+    function cardOf(node) {
+      return node?.closest?.('.card') || node;
+    }
+
+    function showBounded(node, hasContent) {
+      const target = cardOf(node);
+      if (target) target.classList.toggle('hidden', !hasContent);
+    }
+
+    function dot(tone) {
+      const span = document.createElement('span');
+      span.className = `dot ${toneClass[tone] || 'green'}`;
+      return span;
+    }
+
+    function badge(label, tone) {
+      const span = document.createElement('span');
+      span.className = `badge ${toneClass[tone] || ''}`.trim();
+      span.textContent = label;
+      return span;
+    }
+
+    function codeOrText(value) {
+      if (typeof value !== 'string') return document.createTextNode('');
+      const codeLike = /^(templates|examples|docs|validation|skills|handoff|PROJECT|PLAN|README|main\b|[a-f0-9]{7,})/.test(value);
+      if (!codeLike) return document.createTextNode(value);
+      const code = document.createElement('code');
+      code.textContent = value;
+      return code;
+    }
+
+    function renderList(id, items) {
+      const list = document.getElementById(id);
+      const hasItems = Array.isArray(items) && items.length > 0;
+      showBounded(list, hasItems);
+      if (!list || !hasItems) return;
+      list.replaceChildren(...items.map(item => {
+        const li = document.createElement('li');
+        li.append(dot(item.tone));
+        const span = document.createElement('span');
+        if (item.title) {
+          const strong = document.createElement('b');
+          strong.textContent = item.title;
+          span.append(strong, ' ');
+        }
+        span.append(item.text || '');
+        li.append(span);
+        return li;
+      }));
+    }
+
+    function renderMiniCards(id, items) {
+      const grid = document.getElementById(id);
+      const hasItems = Array.isArray(items) && items.length > 0;
+      showBounded(grid, hasItems);
+      if (!grid || !hasItems) return;
+      grid.replaceChildren(...items.map(item => {
+        const card = document.createElement('div');
+        card.className = 'mini-card';
+        const title = document.createElement('b');
+        title.textContent = item.title;
+        const body = document.createElement('span');
+        body.textContent = item.text;
+        card.append(title, body);
+        return card;
+      }));
+    }
+
+    function renderModules(id, items) {
+      const grid = document.getElementById(id);
+      const hasItems = Array.isArray(items) && items.length > 0;
+      showBounded(grid, hasItems);
+      if (!grid || !hasItems) return;
+      grid.replaceChildren(...items.map(item => {
+        const module = document.createElement('div');
+        module.className = 'module';
+        module.append(badge(item.badge, item.tone));
+        const title = document.createElement('b');
+        title.textContent = item.title;
+        const body = document.createElement('span');
+        body.textContent = item.text;
+        module.append(title, body);
+        return module;
+      }));
+    }
+
+    function renderTimeline(id, items) {
+      const timeline = document.getElementById(id);
+      const hasItems = Array.isArray(items) && items.length > 0;
+      showBounded(timeline, hasItems);
+      if (!timeline || !hasItems) return;
+      timeline.replaceChildren(...items.map(item => {
+        const step = document.createElement('div');
+        step.className = 'step';
+        const label = document.createElement('div');
+        label.className = 'step-time';
+        label.textContent = item.label;
+        const card = document.createElement('div');
+        card.className = 'step-card';
+        const title = document.createElement('b');
+        title.textContent = item.title;
+        card.append(title, ` ${item.text || ''}`);
+        step.append(label, card);
+        return step;
+      }));
+    }
+
+    function renderContextFields(fields) {
+      const grid = document.getElementById('project-context-fields');
+      const entries = fields && typeof fields === 'object' ? Object.entries(fields).filter(([, value]) => value) : [];
+      showBounded(grid, entries.length > 0);
+      if (!grid || entries.length === 0) return;
+      grid.replaceChildren(...entries.map(([label, value]) => {
+        const field = document.createElement('div');
+        field.className = 'field';
+        const title = document.createElement('b');
+        title.textContent = label;
+        const body = document.createElement('span');
+        body.textContent = value;
+        field.append(title, body);
+        return field;
+      }));
+    }
+
+    function renderSequence(rows) {
+      const body = document.getElementById('next-sequence');
+      const hasRows = Array.isArray(rows) && rows.length > 0;
+      showBounded(body, hasRows);
+      if (!body || !hasRows) return;
+      body.replaceChildren(...rows.map(row => {
+        const tr = document.createElement('tr');
+        [row.move, row.purpose, row.owner].forEach(value => {
+          const td = document.createElement('td');
+          td.textContent = value || '';
+          tr.append(td);
+        });
+        return tr;
+      }));
+    }
+
+    function renderHealthBoard(items) {
+      const board = document.getElementById('health-board');
+      const hasItems = Array.isArray(items) && items.length > 0;
+      showBounded(board, hasItems);
+      if (!board || !hasItems) return;
+      board.replaceChildren(...items.map(item => {
+        const tile = document.createElement('div');
+        tile.className = 'health-tile';
+        tile.append(badge(item.badge, item.tone));
+        const title = document.createElement('strong');
+        title.textContent = item.title;
+        const body = document.createElement('span');
+        body.textContent = item.text;
+        tile.append(title, body);
+        return tile;
+      }));
+    }
+
+    function renderEvidence(rows) {
+      const body = document.getElementById('evidence-ledger');
+      const hasRows = Array.isArray(rows) && rows.length > 0;
+      showBounded(body, hasRows);
+      if (!body || !hasRows) return;
+      body.replaceChildren(...rows.map(row => {
+        const tr = document.createElement('tr');
+        const claim = document.createElement('td');
+        claim.textContent = row.claim || '';
+        const source = document.createElement('td');
+        source.append(codeOrText(row.source));
+        const confidence = document.createElement('td');
+        confidence.textContent = row.confidence || '';
+        tr.append(claim, source, confidence);
+        return tr;
+      }));
+    }
+
+    function renderPrompts(prompts) {
+      const grid = document.getElementById('prompt-cards');
+      const hasPrompts = Array.isArray(prompts) && prompts.length > 0;
+      showBounded(grid, hasPrompts);
+      if (!grid || !hasPrompts) return;
+      grid.replaceChildren(...prompts.map(prompt => {
+        const card = document.createElement('article');
+        card.className = 'card span-4';
+        const heading = document.createElement('h3');
+        heading.append(prompt.title || 'Next prompt', ' ', badge(prompt.label || 'copy', prompt.tone));
+        const body = document.createElement('div');
+        body.className = 'card-body prompt';
+        const code = document.createElement('code');
+        code.textContent = prompt.text || '';
+        const button = document.createElement('button');
+        button.className = 'copy';
+        button.dataset.copy = prompt.text || '';
+        button.textContent = 'Copy prompt';
+        body.append(code, button);
+        card.append(heading, body);
+        return card;
+      }));
+      bindCopyButtons(grid.querySelectorAll('.copy'));
+    }
+
+    function renderDashboard(context = {}) {
+      text('brand-mark', context.identity?.shortName);
+      text('project-name', context.identity?.name);
+      text('project-kicker', context.identity?.kicker);
+      text('hero-headline', context.summary?.headline);
+      text('hero-description', context.summary?.description);
+      text('checkpoint-pill', context.summary?.checkpointLabel);
+      text('footer-state', context.identity?.name && context.context?.Phase ? `${context.identity.name} · ${context.context.Phase}` : '');
+      text('footer-next', context.summary?.footerNext, 'Next: ');
+
+      const checkpoint = document.getElementById('checkpoint');
+      if (checkpoint && context.summary?.checkpointText) checkpoint.value = context.summary.checkpointText;
+
+      text('workflow-input-count', Array.isArray(context.workflowInputs) ? context.workflowInputs.length : '');
+      text('skill-module-count', Array.isArray(context.skillOutputs) ? context.skillOutputs.length : '');
+      text('health-score', context.health?.score);
+      text('health-label', context.health?.label);
+
+      renderList('health-list', context.health?.items);
+      renderTimeline('execution-map', context.executionMap);
+      renderMiniCards('workflow-inputs', context.workflowInputs);
+      renderContextFields(context.context);
+      renderList('done-list', context.definitionOfDone);
+      renderModules('skill-output-matrix', context.skillOutputs);
+      renderSequence(context.sequence);
+      renderTimeline('workflow-map', context.workflowMap || [
+        { label: '●', title: 'Completed milestone.', text: 'Evidence-backed work that should not be re-litigated.' },
+        { label: '◉', title: 'Current work.', text: 'The one milestone active right now, with an exit condition.' },
+        { label: '○', title: 'Upcoming milestone.', text: 'The next meaningful continuation after the current work is validated.' }
+      ]);
+      renderHealthBoard(context.workflowHealth);
+      renderEvidence(context.evidence);
+      renderPrompts(context.prompts);
+
+      if (context.usageGauge) {
+        text('usage-intensity', context.usageGauge.intensity, 'Representative intensity: ');
+        const fill = document.getElementById('usage-meter-fill');
+        if (fill && Number.isFinite(context.usageGauge.value)) fill.style.setProperty('--value', `${context.usageGauge.value}%`);
+        text('usage-driver', context.usageGauge.driver, 'Main driver: ');
+        text('usage-saving', context.usageGauge.savingMove, 'Saving move: ');
+      } else {
+        showBounded(document.getElementById('usage-intensity'), false);
+      }
+    }
+
+    async function loadProjectContext() {
+      if (window.PROJECT_WORKFLOW_CONTEXT) {
+        renderDashboard(window.PROJECT_WORKFLOW_CONTEXT);
+        return;
+      }
+      try {
+        const response = await fetch('project-workflow-context.example.json', { cache: 'no-store' });
+        if (!response.ok) return;
+        renderDashboard(await response.json());
+      } catch (error) {
+        // Static fallback remains usable when file loading is blocked.
+      }
+    }
+
+    window.ProjectWorkflowDashboard = { render: renderDashboard };
+    document.body.dataset.dashboardRenderer = 'ready';
+    document.dispatchEvent(new CustomEvent('projectworkflow:ready'));
+
     const tabs = [...document.querySelectorAll('[data-tab-target]')];
     const panels = [...document.querySelectorAll('.tab-panel')];
     const tabButtons = [...document.querySelectorAll('.tab')];
@@ -1104,7 +1399,10 @@
       scratchStatus.className = 'badge warn';
     });
 
-    document.querySelectorAll('.copy').forEach(button => {
+    function bindCopyButtons(buttons) {
+      buttons.forEach(button => {
+        if (button.dataset.copyBound === 'true') return;
+        button.dataset.copyBound = 'true';
       button.addEventListener('click', async () => {
         const original = button.textContent;
         let copied = false;
@@ -1136,7 +1434,11 @@
         button.textContent = copied ? 'Copied' : 'Copy unavailable';
         setTimeout(() => { button.textContent = original; }, 1200);
       });
-    });
+      });
+    }
+
+    bindCopyButtons(document.querySelectorAll('.copy'));
+    loadProjectContext();
   </script>
 </body>
 </html>

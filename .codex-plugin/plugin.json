@@ -1,0 +1,36 @@
+{
+  "name": "project-workflow",
+  "version": "0.1.0",
+  "description": "Focused workflow skills and dashboard templates for keeping project work resumable, evidence-backed, and usage-aware.",
+  "author": {
+    "name": "Alfyos",
+    "url": "https://github.com/alfychap"
+  },
+  "repository": "https://github.com/alfychap/project-workflow",
+  "keywords": [
+    "codex",
+    "workflow",
+    "skills",
+    "checkpoint",
+    "dashboard"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Project Workflow",
+    "shortDescription": "Skills and templates for resumable project work.",
+    "longDescription": "Project Workflow packages focused Codex skills for prompt cleanup, project structure, checkpoints, usage forecasting, execution planning, and evidence-based project status dashboards.",
+    "developerName": "Alfyos",
+    "category": "Productivity",
+    "capabilities": [
+      "Planning",
+      "Project Management",
+      "Documentation"
+    ],
+    "defaultPrompt": [
+      "Create a compact project checkpoint.",
+      "Clean up this prompt without changing intent.",
+      "Gauge the likely usage intensity."
+    ],
+    "brandColor": "#4F7CFF"
+  }
+}
