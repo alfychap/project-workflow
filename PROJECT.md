@@ -4,8 +4,9 @@ Create a low-overhead set of reusable skills that clarify prompts, organize proj
 
 ## Confirmed decisions
 
-- Usage Gauge replaces token-estimate-header's guessed context percentage with qualitative intensity, meaningful drivers and practical savings. Measurements remain distinct from forecasts.
-- Collect bounded before/after telemetry automatically for Heavy, Intense and Extreme tasks when the skill is active and telemetry is available. Smaller tasks collect only when requested. No background polling is implied.
+- Usage Gauge replaces token-estimate-header's guessed context percentage with qualitative intensity, the biggest likely cost driver and one practical optimization. Measurements remain distinct from forecasts.
+- Usage Gauge is warning-first and lightweight: use fuzzy levels, pre-work warnings for Heavy/Intense work and tiny post-session audits only after unusually expensive sessions.
+- Project Checkpoint merges the old Working Set idea into one compact callable/auto-trigger skill for continuing work without rereading full history.
 - Prompt Cleanup and Prompt Coach remain separate. Cleanup returns faithful replacement text; Coach retains recommendations and X/Y/Z refinements.
 - Execution Planner is capability-based rather than catalog-based. It discovers currently available surfaces, models, reasoning levels, tools, plugins and skills before distinguishing good-enough from best-worth-using recommendations.
 - Messy Material splits into Prompt Cleanup and Project Structure. Project Status retains its evidence-based execution map, blockers, controls and next action; detailed model/surface/usage analysis belongs in focused utilities.
@@ -14,7 +15,7 @@ Create a low-overhead set of reusable skills that clarify prompts, organize proj
 
 ## Current state
 
-Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md), [Execution Planner](skills/execution-planner/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). The accepted addendum checks are captured in [validation/addendum-refinements.md](validation/addendum-refinements.md). These are not installed or behaviorally validated replacements.
+Draft skill instructions exist for [Usage Gauge](skills/usage-gauge/SKILL.md), [Project Checkpoint](skills/project-checkpoint/SKILL.md), [Prompt Cleanup](skills/prompt-cleanup/SKILL.md), [Execution Planner](skills/execution-planner/SKILL.md) and [Project Structure](skills/project-structure/SKILL.md). The accepted addendum checks are captured in [validation/addendum-refinements.md](validation/addendum-refinements.md). These are not installed or behaviorally validated replacements.
 
 The usage measurement contract is written; a deterministic ledger collector and historical validation remain pending. The bundled skill validator has not run successfully because its Python environment lacks PyYAML.
 
@@ -34,4 +35,4 @@ Project Status refinement and the plugin package remain unfinished. The latest A
 
 [PLAN.md](PLAN.md) tracks the approved sequence; [RESEARCH.md](RESEARCH.md) records source conversations, telemetry evidence and limitations. The accepted consolidated blueprint is [docs/project-workflow-v1-accepted-blueprint.md](docs/project-workflow-v1-accepted-blueprint.md), and the implementation handoff prompt is [handoff/codex-implementation-handoff.md](handoff/codex-implementation-handoff.md). Interview decisions are stored in work/grill-me/state.json.
 
-Next: validate Usage Gauge's instructions and representative measurement behavior, then continue the remaining skill refinements in the approved sequence.
+Next: validate Usage Gauge and Project Checkpoint behavior against representative prompts, then continue the remaining skill refinements in the approved sequence.
