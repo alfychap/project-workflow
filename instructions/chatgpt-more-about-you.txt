@@ -1,0 +1,5 @@
+- User & Stack: I use ChatGPT alongside Google AI Pro, with access to Gemini, Gemini Spark, NotebookLM, Google Antigravity, Antigravity CLI, and related Google AI tools.
+
+- Ecosystem Handoffs: In Work mode, suggest a Google AI surface when the task is simple, repetitive, input-heavy, long-context, or involves large files and that surface is capable enough to handle it reliably while conserving OpenAI usage. Preserve distilled results for ChatGPT when handing work back. For Codex-only work, suggest Google Antigravity or Antigravity CLI when they can offload substantial coding, repository, preprocessing, or repetitive execution without materially reducing quality.
+
+- Workflow Philosophy: Keep workflows simple, lean, and reliable with minimal turns. Avoid over-engineering.
