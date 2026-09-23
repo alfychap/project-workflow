@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:,">
+  <link rel="icon" type="image/png" href="./project-workflow-icon.png">
   <title>Project Workflow Dashboard Template</title>
   <style>
     :root {
@@ -59,16 +59,10 @@
     }
 
     .brand-mark {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--ink);
-      border-radius: 8px;
-      background: linear-gradient(145deg, var(--cobalt), var(--violet));
-      color: white;
-      box-shadow: 6px 6px 0 var(--ink);
-      font-weight: 900;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      object-fit: contain;
     }
 
     h1, h2, h3, p { margin: 0; }
@@ -691,7 +685,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark" id="brand-mark">PW</div>
+        <img class="brand-mark" src="./project-workflow-icon.png" alt="Project Workflow icon">
         <div>
           <p class="kicker">Project workflow</p>
           <h1 id="project-name">project checkpoint</h1>
@@ -1331,7 +1325,6 @@
     }
 
     function renderDashboard(context = {}) {
-      text('brand-mark', context.identity?.shortName);
       text('project-name', context.identity?.name);
       text('project-kicker', context.identity?.kicker);
       text('hero-headline', context.summary?.headline);

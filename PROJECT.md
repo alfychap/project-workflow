@@ -17,7 +17,7 @@ Provide one packaged Project Workflow plugin plus independently installable `pw-
 
 The v0.2.0 implementation is committed on `codex/pw-v1-expansion`. All 18 PW skills and standalone `teach` pass the bundled skill validator; plugin validation, dashboard browser checks, and archive integrity checks pass. The stale root `plugin.json` and `.tmp.driveupload/` upload cache are excluded from Git; `.codex-plugin/plugin.json` is the canonical manifest.
 
-The v0.2.1 package adds the user's Drive icon as the plugin logo and composer icon. The local Codex installation is enabled with all 18 skills and the new icon; the cached icon matches the Drive PNG by SHA-256. ChatGPT account and iOS Work availability still require account-side installation and verification.
+The v0.2.2 package adds the user's Drive icon as the plugin logo, composer icon, and dashboard header/favicon. The local Codex installation is enabled with all 18 skills; ChatGPT account and iOS Work availability still require account-side installation and verification.
 
 ## Definition of done
 
@@ -29,4 +29,4 @@ The v0.2.1 package adds the user's Drive icon as the plugin logo and composer ic
 
 ## Next action
 
-Publish the v0.2.1 icon package and make it available for account-side installation. Verify ChatGPT Work on iOS separately from the local Codex installation.
+Publish the v0.2.2 icon package and make it available for account-side installation. Verify ChatGPT Work on iOS separately from the local Codex installation.
