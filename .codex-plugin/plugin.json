@@ -1,6 +1,6 @@
 {
   "name": "project-workflow",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Eighteen focused PW skills for routing, clarification, planning, implementation, continuity, review, and dashboard rendering.",
   "author": {
     "name": "Alfyos",
@@ -16,6 +16,8 @@
   ],
   "skills": "./skills/",
   "interface": {
+    "composerIcon": "./assets/project-workflow-icon.png",
+    "logo": "./assets/project-workflow-icon.png",
     "displayName": "Project Workflow",
     "shortDescription": "Focused skills for clear, resumable project work.",
     "longDescription": "Project Workflow packages focused Codex skills for routing, clarification, project state, checkpoints, specifications, execution, handoffs, retrospectives, usage forecasting, workflow health, and an evidence-backed dashboard renderer.",
