@@ -1,0 +1,329 @@
+{
+  "identity": {
+    "name": "Project Workflow",
+    "shortName": "PW",
+    "kicker": "Reusable project state",
+    "repository": "alfychap/project-workflow",
+    "surface": "Codex plugin workspace"
+  },
+  "summary": {
+    "headline": "Make the project easy to resume.",
+    "description": "A compact dashboard renderer for project state, evidence, risks, workflow health, skill outputs, and the next action.",
+    "checkpointLabel": "Checkpoint · v0.2.0 package",
+    "checkpointText": "Project: Project Workflow. Phase: Verify. Status: the 18-skill plugin, standalone skills, and dashboard are implemented and validated locally. Evidence: PROJECT.md and validation/. Next action: review and commit the v0.2.0 diff, sync with origin/main, then reinstall and verify in a fresh task.",
+    "footerNext": "Review and commit v0.2.0, sync with origin/main, then reinstall and verify the plugin in a fresh Codex task."
+  },
+  "health": {
+    "score": 92,
+    "label": "ready for commit",
+    "items": [
+      {
+        "tone": "green",
+        "title": "Implementation is validated.",
+        "text": "The final skill inventory, plugin package, dashboard interactions, and attribution checks pass."
+      },
+      {
+        "tone": "gold",
+        "title": "Branch is unpublished.",
+        "text": "The v0.2.0 diff still needs a coherent commit, sync with origin/main, and push."
+      },
+      {
+        "tone": "coral",
+        "title": "External copies are stale.",
+        "text": "The installed v0.1.0 plugin and Drive, Notion, and ChatGPT account copies do not yet include v0.2.0."
+      }
+    ]
+  },
+  "context": {
+    "Identity": "Project Workflow; private repository workspace for focused skills and a reusable status dashboard.",
+    "Purpose": "Reduce repeated context, clarify prompts, preserve project state, and make the next action obvious.",
+    "Phase": "Verify",
+    "Status": "The v0.2.0 implementation and packages are complete locally; commit, remote sync, and installation verification remain.",
+    "Goals": "Publish the validated plugin, verify the fresh local installation, and refresh external snapshots.",
+    "Scope": "Eighteen focused pw-* skills, shared Project Context, and the reusable PW dashboard renderer.",
+    "Constraints": "Local-first evidence, compact checkpoints, no hardcoded model catalog, no dashboard-as-source-of-truth.",
+    "Checkpoint": "v0.2.0 implementation branch with final PW inventory and dashboard action cards."
+  },
+  "workflowInputs": [
+    {
+      "title": "Blueprint",
+      "text": "Purpose, scope, constraints, architecture, success criteria."
+    },
+    {
+      "title": "Checkpoint",
+      "text": "Current phase, completed work, open risk, next action."
+    },
+    {
+      "title": "Evidence",
+      "text": "Files, commits, screenshots, measurements, user decisions."
+    }
+  ],
+  "executionMap": [
+    {
+      "label": "Now",
+      "title": "Review and commit.",
+      "text": "Review the v0.2.0 diff and create one coherent implementation commit."
+    },
+    {
+      "label": "Next",
+      "title": "Sync and publish.",
+      "text": "Rebase onto origin/main, rerun targeted checks, and push the feature branch."
+    },
+    {
+      "label": "Later",
+      "title": "Refresh installations.",
+      "text": "Reinstall with a cache-busted version, verify a fresh Codex task, then update account and backup copies."
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "tone": "green",
+      "text": "Dashboard renders compact Project Context without duplicating the whole blueprint."
+    },
+    {
+      "tone": "green",
+      "text": "Missing optional fields hide their cards rather than showing empty filler."
+    },
+    {
+      "tone": "gold",
+      "text": "Residual risks and pending external coverage remain explicit."
+    },
+    {
+      "tone": "violet",
+      "text": "A future continuation can start from the dashboard and checkpoint without rereading long history."
+    }
+  ],
+  "skillOutputs": [
+    {
+      "badge": "pw-project-status",
+      "tone": "cool",
+      "title": "Owns",
+      "text": "Current phase, progress, blockers, execution map, evidence, and next action."
+    },
+    {
+      "badge": "pw-messy-material",
+      "tone": "good",
+      "title": "Owns",
+      "text": "Useful structure for disorganized material and faithful prompt cleanup when requested."
+    },
+    {
+      "badge": "pw-usage-gauge",
+      "tone": "warn",
+      "title": "Owns",
+      "text": "Fuzzy intensity, biggest likely cost driver, one practical optimization, useful post-session audits."
+    },
+    {
+      "badge": "pw-execution-planner",
+      "tone": "weird",
+      "title": "Owns",
+      "text": "Capability-based surface, model, reasoning, tool, plugin, and skill route."
+    },
+    {
+      "badge": "pw-project-structure",
+      "tone": "good",
+      "title": "Owns",
+      "text": "Folders, artifact placement, docs, Git workflow, checkpoints, archive strategy, concise PROJECT.md."
+    },
+    {
+      "badge": "pw-prompt-coach",
+      "tone": "cool",
+      "title": "Owns",
+      "text": "Prompt coaching, execution recommendations, and iterative refinements."
+    },
+    {
+      "badge": "pw-router",
+      "tone": "weird",
+      "title": "Owns",
+      "text": "The minimum useful specialist or short sequence; direct invocation remains valid."
+    },
+    {
+      "badge": "pw-workflow-health",
+      "tone": "warn",
+      "title": "Owns",
+      "text": "Evidence-backed workflow diagnosis without repeating specialist analysis."
+    }
+  ],
+  "sequence": [
+    {
+      "move": "Confirm state",
+      "purpose": "Verify the current project phase, completed work, and open risks.",
+      "owner": "pw-project-status"
+    },
+    {
+      "move": "Plan execution",
+      "purpose": "Choose surface, model, reasoning, tools, plugins, and skills from available capabilities.",
+      "owner": "pw-execution-planner"
+    },
+    {
+      "move": "Reduce waste",
+      "purpose": "Estimate qualitative usage intensity and identify one safe saving move.",
+      "owner": "pw-usage-gauge"
+    },
+    {
+      "move": "Checkpoint",
+      "purpose": "Commit, save, or hand off only after validation evidence is recorded.",
+      "owner": "pw-project-checkpoint"
+    }
+  ],
+  "workflowHealth": [
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Scope",
+      "text": "Clear current milestone and explicit exclusions."
+    },
+    {
+      "badge": "attention",
+      "tone": "warn",
+      "title": "Usage",
+      "text": "Watch context-heavy rereads and broad undirected passes."
+    },
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Structure",
+      "text": "Artifacts have a place and checkpoints are named."
+    },
+    {
+      "badge": "problem",
+      "tone": "risk",
+      "title": "Evidence gap",
+      "text": "Any completion claim without a source should be repaired."
+    },
+    {
+      "badge": "attention",
+      "tone": "warn",
+      "title": "Prompt quality",
+      "text": "Success criteria may need sharpening on large prompts."
+    },
+    {
+      "badge": "healthy",
+      "tone": "good",
+      "title": "Execution",
+      "text": "Available capabilities are routed before work begins."
+    }
+  ],
+  "usageGauge": {
+    "intensity": "Moderate to Heavy",
+    "value": 62,
+    "driver": "multi-section dashboard review and visual QA, not raw prompt length.",
+    "savingMove": "Start from the current checkpoint and targeted screenshots before rereading old chats."
+  },
+  "moduleActions": [
+    {
+      "skill": "pw-project-checkpoint",
+      "tone": "good",
+      "title": "Checkpoint is fresh",
+      "state": "Updated for the current Verify phase.",
+      "detail": "Next action: review and commit the validated v0.2.0 implementation.",
+      "actionLabel": "Update checkpoint",
+      "prompt": "Use $pw-project-checkpoint to update the compact continuation state, working set, blockers, and next action."
+    },
+    {
+      "skill": "pw-grill-me",
+      "tone": "warn",
+      "title": "No blocking product decision",
+      "state": "Clarification is available if a new ambiguity changes implementation.",
+      "actionLabel": "Start clarification",
+      "prompt": "Use $pw-grill-me to resolve the most consequential open decision without revisiting settled choices."
+    },
+    {
+      "skill": "pw-grill-with-docs",
+      "tone": "warn",
+      "title": "One terminology conflict",
+      "state": "Old docs still call the cleaned-prompt behavior Prompt Cleanup.",
+      "actionLabel": "Resolve in docs",
+      "prompt": "Use $pw-grill-with-docs to resolve the Prompt Cleanup versus pw-messy-material terminology and update only the canonical docs."
+    },
+    {
+      "skill": "pw-to-spec",
+      "tone": "good",
+      "title": "Ready to update the spec",
+      "state": "The final skill inventory and ownership boundaries are settled.",
+      "actionLabel": "Generate spec",
+      "prompt": "Use $pw-to-spec to produce a concise implementation-ready spec from the settled Project Workflow decisions."
+    },
+    {
+      "skill": "pw-handoff",
+      "tone": "cool",
+      "title": "Destination: fresh Codex task",
+      "state": "Reference the latest checkpoint and this branch rather than duplicating project history.",
+      "actionLabel": "Preview handoff",
+      "prompt": "Use $pw-handoff to preview a task-specific transfer to a fresh Codex task, referencing the latest checkpoint."
+    },
+    {
+      "skill": "pw-retro",
+      "tone": "weird",
+      "title": "Latest improvement",
+      "state": "Avoid rereading full histories after a current checkpoint exists.",
+      "actionLabel": "Run retro",
+      "prompt": "Use $pw-retro to review this completed phase for repeated reads, validation loops, routing mistakes, and missing automation."
+    },
+    {
+      "skill": "pw-implement",
+      "tone": "good",
+      "title": "Ready",
+      "state": "Acceptance criteria: valid inventory, routing, dashboard interactions, package build, and attribution.",
+      "actionLabel": "Implement settled work",
+      "prompt": "Use $pw-implement to execute the approved Project Workflow specification with only targeted checks."
+    },
+    {
+      "skill": "pw-prototype",
+      "tone": "cool",
+      "title": "No active prototype",
+      "state": "Create one only if an unresolved interaction question needs a cheap experiment.",
+      "actionLabel": "Test a hypothesis",
+      "prompt": "Use $pw-prototype to test one unresolved dashboard interaction hypothesis and mark the artifact as a prototype."
+    },
+    {
+      "skill": "pw-wait-what",
+      "tone": "warn",
+      "title": "Explain this",
+      "state": "Re-pitch only the confusing part in current Project Workflow vocabulary.",
+      "actionLabel": "Explain this",
+      "prompt": "Use $pw-wait-what to explain the confusing part of the current Project Workflow state."
+    }
+  ],
+  "evidence": [
+    {
+      "claim": "Dashboard exists",
+      "source": "skills/pw-dashboard/assets/project-workflow-dashboard.html",
+      "confidence": "High"
+    },
+    {
+      "claim": "Seed preserved",
+      "source": "examples/alfydd/alfydd-project-status-dashboard.html",
+      "confidence": "High"
+    },
+    {
+      "claim": "Skill boundaries accepted",
+      "source": "docs/project-workflow-v1-accepted-blueprint.md",
+      "confidence": "High"
+    },
+    {
+      "claim": "Visual QA complete",
+      "source": "validation/dashboard-template-static-review.md",
+      "confidence": "High"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Validate current dashboard binding",
+      "tone": "good",
+      "label": "best",
+      "text": "Review the Project Workflow dashboard with the included Project Context fixture. Verify minimal and populated rendering, missing-card behavior, tabs, copy controls, and mobile layout."
+    },
+    {
+      "title": "Update project checkpoint",
+      "tone": "warn",
+      "label": "scope lock",
+      "text": "Using the current project evidence, update PROJECT.md with purpose, confirmed decisions, current state, completion criteria, sources, and next action. Keep it compact."
+    },
+    {
+      "title": "Prepare plugin handoff",
+      "tone": "weird",
+      "label": "handoff",
+      "text": "Create a concise handoff note for this project with objective, completed work, constraints, files changed, validation run, and exact next task."
+    }
+  ]
+}

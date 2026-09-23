@@ -8,3 +8,5 @@ __pycache__/
 backups/
 dist/
 *.zip
+/.tmp.driveupload/
+/plugin.json

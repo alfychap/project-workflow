@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "session": "example-projects-dashboard",
+  "revision": 0,
+  "phase": "interview",
+  "layout": "focus",
+  "goal": "Make my Projects tab show what needs my attention today.",
+  "decisions": [
+    {"id":"outcome","label":"Outcome","status":"open","answer":"","depends_on":[]},
+    {"id":"scope","label":"Scope","status":"open","answer":"","depends_on":["outcome"]},
+    {"id":"success","label":"Success check","status":"open","answer":"","depends_on":["scope"]}
+  ],
+  "question": {
+    "id":"outcome",
+    "title":"What should this tab help you do first?",
+    "why":"This decides which information deserves the first screen.",
+    "options":[
+      {"label":"Choose my next three actions","detail":"A short morning queue with links to the source."},
+      {"label":"Catch blockers and deadlines","detail":"Bring exceptions forward before routine work."},
+      {"label":"Understand every project's status","detail":"A broader overview with more context to scan."}
+    ]
+  },
+  "assumptions":["Fictional example: retain the existing navigation."],
+  "sources":[],
+  "brief":null,
+  "approval":null
+}

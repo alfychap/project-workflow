@@ -1,13 +1,13 @@
 # Project Workflow Dashboard Acceptance
 
-Date: 2026-09-16
+Date: 2026-09-17
 
-Template: `templates/project-workflow-dashboard.html`
-Project Context fixture: `templates/project-workflow-context.example.json`
+Template: `skills/pw-dashboard/assets/project-workflow-dashboard.html`
+Project Context fixture: `skills/pw-dashboard/assets/project-workflow-context.example.json`
 
 ## Status
 
-Initial Project Context binding implemented and browser-checked for the static dashboard template.
+Project Context binding and the v0.2 PW action cards are implemented and browser-checked in the canonical `pw-dashboard` asset.
 
 The dashboard now exposes `window.ProjectWorkflowDashboard.render(context)` and attempts to load `project-workflow-context.example.json` when served from the template directory. If loading is unavailable, the static fallback copy remains usable.
 
@@ -25,6 +25,7 @@ Covered renderer paths:
 - `context`
 - `definitionOfDone`
 - `skillOutputs`
+- `moduleActions`
 - `sequence`
 - `workflowHealth`
 - `usageGauge`
@@ -49,11 +50,14 @@ Given an execution-planning request, Execution Planner owns model, surface, tool
 
 ### Populated Fixture
 
-Given `templates/project-workflow-context.example.json`, when the dashboard is served over local HTTP, it populates the hero, health list, Project Context fields, execution map, skill matrix, workflow sequence, usage gauge, evidence ledger, prompts and footer from fixture data.
+Given the bundled Project Context fixture, when the dashboard is served over local HTTP, it populates the hero, health list, Project Context fields, execution map, skill matrix, nine contextual PW action cards, workflow sequence, usage gauge, evidence ledger, prompts and footer from fixture data.
 
 ## Browser Checks
 
-- In-app browser at `http://127.0.0.1:8765/templates/project-workflow-dashboard.html?binding=2` loaded the populated JSON fixture into hero, checkpoint, health, execution map, context fields, modules, evidence, prompts and footer.
+- Playwright loaded `skills/pw-dashboard/assets/project-workflow-dashboard.html` through local HTTP with no page or console errors.
+- The populated fixture rendered all nine requested `moduleActions`; each action button was bound to the existing copy interaction.
+- The new Update Checkpoint action clicked successfully.
+- Rendering a minimal context with an empty `moduleActions` array hid the PW Actions card.
 - In-app browser current viewport reported no horizontal overflow.
 - Tabs opened: Overview, Context, Modules, Workflow, Health, Evidence, Prompts.
 - Action lens changed to Review.
@@ -61,7 +65,6 @@ Given `templates/project-workflow-context.example.json`, when the dashboard is s
 - Copy prompt button showed `Copied`.
 - Scratchpad Save locally and Clear updated visible state.
 - Chrome headless 390 by 844 screenshot checked the first mobile viewport after binding; hero copy wraps without clipping and primary buttons fit.
+- The current 390 by 844 Playwright viewport reported no horizontal overflow after the v0.2 changes.
 
-## Remaining Checks
-
-- A future packaging pass should decide whether the JSON fixture stays as an example only or becomes part of a documented template API.
+The fixture remains an example input owned by `pw-dashboard`, not a second source of truth or a formal cross-module API.

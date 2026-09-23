@@ -1,7 +1,7 @@
 # Dashboard Template Static Review
 
 Date: 2026-09-16
-Template: `templates/project-workflow-dashboard.html`
+Template: `skills/pw-dashboard/assets/project-workflow-dashboard.html`
 Source seed: `examples/alfydd/alfydd-project-status-dashboard.html`
 
 ## Summary
@@ -20,7 +20,7 @@ The recovered Alfydd dashboard was generalized into a reusable Project Workflow 
 
 ## Browser QA Status
 
-Browser QA passed through an approved local HTTP preview at `http://127.0.0.1:8765/templates/project-workflow-dashboard.html`.
+Browser QA passed through a local HTTP preview of the canonical `pw-dashboard` asset.
 
 Checked:
 

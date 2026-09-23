@@ -2,6 +2,10 @@
 
 Verified 2026-09-16. The local working copy is `/Users/alfyos/Project Workflow Plugin`.
 
+## Current status (2026-09-23)
+
+The detailed audit below is a historical record of the 2026-09-16 snapshot. The v0.2.0 plugin implementation and dashboard browser/mobile QA are now complete locally, but the implementation branch is still uncommitted and unpublished. Drive and Notion still need a new point-in-time snapshot after the v0.2.0 commit. The root `plugin.json` is a stale v0.1.0 upload manifest and `.tmp.driveupload/` is a local upload cache; both are excluded from Git. The canonical plugin manifest is `.codex-plugin/plugin.json`.
+
 ## Destinations and coverage
 
 - GitHub: https://github.com/alfychap/project-workflow (`origin`, branch `main`). The previously published commit was `3fc277007f73d4a029c33cc4d5123a5ee77fa7b7`, containing 16 files. All 16 matched the local working files byte for byte before this audit. The local branch initially had no commit/index despite having fetched remote history; it was attached to the existing remote history without replacing working files.
@@ -37,4 +41,4 @@ Usage Gauge is the planned successor to Token Estimate Header, not a byte-identi
 
 GitHub commits/pushes, Drive ZIP uploads and Notion attachments/pages are **manual, point-in-time snapshots, not automatic sync**. Editing this repo does not update installed `~/.codex/skills`, GitHub, Drive or Notion. Pushing GitHub does not refresh Drive or Notion. The local project folder remains the working copy.
 
-The existing ZIP omits `.git`, `backups/`, OS metadata and environment files and contains a SHA-256 manifest. The accepted blueprint, handoff prompt, recovered Alfydd dashboard example and reusable dashboard template were added after the last backup audit; check current Git history for repository coverage, and refresh Drive/Notion separately before claiming coverage there. The unfinished ledger, focused utilities, browser/mobile dashboard QA and final plugin package are not claimed as implemented.
+At the time of this 2026-09-16 audit, the existing ZIP omitted `.git`, `backups/`, OS metadata and environment files and contained a SHA-256 manifest. The accepted blueprint, handoff prompt, recovered Alfydd dashboard example and reusable dashboard template had been added after the last backup audit. The ledger, focused utilities, browser/mobile dashboard QA and final plugin package were not claimed as implemented in that snapshot; see the current-status note above for the later v0.2.0 state.

@@ -1,7 +1,7 @@
 # Usage Gauge and Project Checkpoint Validation
 
 Date: 2026-09-16
-Scope: `skills/usage-gauge/SKILL.md`, `skills/usage-gauge/references/measurement.md`, `skills/project-checkpoint/SKILL.md`, `templates/project-workflow-dashboard.html`
+Scope: `skills/pw-usage-gauge/SKILL.md`, `skills/pw-usage-gauge/references/measurement.md`, `skills/pw-project-checkpoint/SKILL.md`, `skills/pw-dashboard/assets/project-workflow-dashboard.html`
 
 ## Summary
 
@@ -25,15 +25,15 @@ Representative expectations checked:
 
 Evidence:
 
-- `skills/usage-gauge/SKILL.md` defines the forecast as qualitative intensity, not exact accounting.
-- `skills/usage-gauge/SKILL.md` keeps default explicit output tiny: intensity, likely cost driver, and one practical optimization.
-- `skills/usage-gauge/SKILL.md` now includes the accepted Extreme level and pre-work warning behavior for Heavy, Intense, and Extreme work.
-- `skills/usage-gauge/references/measurement.md` keeps measured usage distinct from forecasts, treats missing telemetry as unavailable rather than zero, avoids repeated polling, and prevents unsupported task-level attribution.
-- `templates/project-workflow-dashboard.html` presents Usage Gauge as qualitative and sample-driven rather than as a live quota calculator.
+- `skills/pw-usage-gauge/SKILL.md` defines the forecast as qualitative intensity, not exact accounting.
+- `skills/pw-usage-gauge/SKILL.md` keeps default explicit output tiny: intensity, likely cost driver, and one practical optimization.
+- `skills/pw-usage-gauge/SKILL.md` includes the accepted Extreme level and pre-work warning behavior for Heavy, Intense, and Extreme work.
+- `skills/pw-usage-gauge/references/measurement.md` keeps measured usage distinct from forecasts, treats missing telemetry as unavailable rather than zero, avoids repeated polling, and prevents unsupported task-level attribution.
+- `skills/pw-dashboard/assets/project-workflow-dashboard.html` presents Usage Gauge as qualitative and sample-driven rather than as a live quota calculator.
 
 Residual risk:
 
-- A deterministic ledger collector and historical validation are still pending before plugin packaging. This validation only covers the written skill contract and static template example.
+- The portable skill contract is validated, but no deterministic collector or historical calibration dataset is bundled. Measurement therefore depends on telemetry available in the active surface and otherwise falls back to a qualitative forecast.
 
 ## Project Checkpoint
 
@@ -48,14 +48,14 @@ Representative expectations checked:
 
 Evidence:
 
-- `skills/project-checkpoint/SKILL.md` defines compact activation and explicitly excludes quick questions, casual explanations, one-off rewrites, and tasks with no ongoing project state.
-- `skills/project-checkpoint/SKILL.md` requires settled decisions, current status, working files, next action, ignored/out-of-scope items, and blockers when useful.
-- `skills/project-checkpoint/SKILL.md` keeps optional fields optional and prohibits full file contents, long chat history, and repeated architecture explanations.
-- `templates/project-workflow-dashboard.html` now labels the copyable checkpoint example as "Checkpoint", matching the accepted dashboard terminology.
+- `skills/pw-project-checkpoint/SKILL.md` defines compact activation and explicitly excludes quick questions, casual explanations, one-off rewrites, and tasks with no ongoing project state.
+- `skills/pw-project-checkpoint/SKILL.md` requires settled decisions, current status, working files, next action, do-not-revisit items, and blockers.
+- `skills/pw-project-checkpoint/SKILL.md` keeps optional fields optional and prohibits full file contents, long chat history, and repeated architecture explanations.
+- `skills/pw-dashboard/assets/project-workflow-dashboard.html` labels the copyable example as "Checkpoint", matching the accepted terminology.
 
 Residual risk:
 
-- Real Project Context binding remains future work. The current template is a static renderer with sample copy.
+- The dashboard binds the bundled Project Context fixture. Supplying current project outputs remains the caller's responsibility; the plugin does not claim a background data connection.
 
 ## Validation Commands
 
@@ -69,12 +69,12 @@ class Parser(HTMLParser):
     pass
 
 for path in [
-    Path("templates/project-workflow-dashboard.html"),
+    Path("skills/pw-dashboard/assets/project-workflow-dashboard.html"),
     Path("examples/alfydd/alfydd-project-status-dashboard.html"),
 ]:
     Parser().feed(path.read_text())
     print(f"parsed {path}")
 PY
 rg -n "Extreme|One-Sentence Checkpoint|Light to Extreme|PROJECT CHECKPOINT|qualitative" \
-  skills/usage-gauge skills/project-checkpoint templates validation docs handoff
+  skills/pw-usage-gauge skills/pw-project-checkpoint skills/pw-dashboard validation docs handoff
 ```

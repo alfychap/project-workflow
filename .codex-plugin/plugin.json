@@ -1,7 +1,7 @@
 {
   "name": "project-workflow",
-  "version": "0.1.0",
-  "description": "Focused workflow skills and dashboard templates for keeping project work resumable, evidence-backed, and usage-aware.",
+  "version": "0.2.0",
+  "description": "Eighteen focused PW skills for routing, clarification, planning, implementation, continuity, review, and dashboard rendering.",
   "author": {
     "name": "Alfyos",
     "url": "https://github.com/alfychap"
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Project Workflow",
-    "shortDescription": "Skills and templates for resumable project work.",
-    "longDescription": "Project Workflow packages focused Codex skills for prompt cleanup, project structure, checkpoints, usage forecasting, execution planning, and evidence-based project status dashboards.",
+    "shortDescription": "Focused skills for clear, resumable project work.",
+    "longDescription": "Project Workflow packages focused Codex skills for routing, clarification, project state, checkpoints, specifications, execution, handoffs, retrospectives, usage forecasting, workflow health, and an evidence-backed dashboard renderer.",
     "developerName": "Alfyos",
     "category": "Productivity",
     "capabilities": [
@@ -27,9 +27,9 @@
       "Documentation"
     ],
     "defaultPrompt": [
+      "Choose the minimum useful PW specialist for this request.",
       "Create a compact project checkpoint.",
-      "Clean up this prompt without changing intent.",
-      "Gauge the likely usage intensity."
+      "Render the current PW module outputs in the dashboard."
     ],
     "brandColor": "#4F7CFF"
   }

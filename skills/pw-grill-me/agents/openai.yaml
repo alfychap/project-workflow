@@ -1,0 +1,5 @@
+interface:
+  display_name: "🔥 PW Grill Me"
+  short_description: "Clarify your plan, one consequential question at a time"
+  brand_color: "#38634D"
+  default_prompt: "Use $pw-grill-me to clarify consequential ambiguity in this plan, with Focus first and the decision board available when I want it."

@@ -1,0 +1,101 @@
+<style>
+#grill-live{--gm-bg:light-dark(#fffdf9,#211f1c);--gm-soft:light-dark(#f4f1eb,#2d2a26);--gm-ink:light-dark(#282721,#f4f1e9);--gm-sub:light-dark(#69685e,#bdb9af);--gm-line:light-dark(#dfdcd2,#49453d);--gm-accent:light-dark(#38634d,#a0c9ad);--gm-accent-ink:light-dark(#ffffff,#172c20);--gm-wash:light-dark(#eaf1e9,#293c30);font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--gm-ink);width:100%;overflow-wrap:anywhere}
+#grill-live *{box-sizing:border-box}#grill-live [hidden]{display:none!important}
+#grill-live button,#grill-live textarea{font:inherit;color:inherit}#grill-live button{cursor:pointer;min-height:44px}#grill-live button:disabled{opacity:.55;cursor:default}
+#grill-live .gm-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+#grill-live .gm-mode{border:1px solid var(--gm-line);border-radius:24px;padding:9px 16px;background:var(--gm-bg)}
+#grill-live .gm-mode[aria-pressed=true]{background:var(--gm-ink);color:var(--gm-bg)}
+#grill-live .gm-window{background:var(--gm-bg);border:1px solid var(--gm-line);border-radius:20px;overflow:hidden}
+#grill-live header,#grill-live footer{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+#grill-live header{border-bottom:1px solid var(--gm-line)}#grill-live footer{border-top:1px solid var(--gm-line);background:var(--gm-soft)}
+#grill-live .gm-brand{font-size:17px;font-weight:500}#grill-live .gm-note{font-size:12px;color:var(--gm-sub)}
+#grill-live .gm-session{padding:20px 24px 0}#grill-live .gm-goal{font-size:16px;margin:4px 0 8px;font-weight:500}
+#grill-live .gm-eyebrow{font-size:12px;color:var(--gm-sub)}#grill-live .gm-layout{display:grid;gap:24px;padding:24px}
+#grill-live[data-layout=board] .gm-layout{grid-template-columns:minmax(0,1fr) minmax(160px,210px)}
+#grill-live main{min-width:0}#grill-live h2{font-size:25px;line-height:1.25;letter-spacing:-.025em;font-weight:500;margin:8px 0 10px}
+#grill-live .gm-why{color:var(--gm-sub);margin:0 0 18px}#grill-live .gm-options{display:grid;gap:9px;margin:16px 0}
+#grill-live .gm-option{width:100%;text-align:left;padding:13px 15px;border:1px solid var(--gm-line);border-radius:12px;background:var(--gm-bg)}
+#grill-live .gm-option[aria-pressed=true]{border-color:var(--gm-accent);background:var(--gm-wash)}
+#grill-live .gm-detail{display:block;font-size:12px;color:var(--gm-sub);margin-top:3px}
+#grill-live label{display:block;font-size:12px;color:var(--gm-sub);margin:16px 0 7px}
+#grill-live textarea{width:100%;display:block;min-height:84px;resize:vertical;border:1px solid var(--gm-line);border-radius:12px;background:var(--gm-bg);padding:12px;font-size:16px}
+#grill-live .gm-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+#grill-live .gm-primary{border:0;border-radius:10px;padding:11px 16px;background:var(--gm-accent);color:var(--gm-accent-ink)}
+#grill-live .gm-secondary{border:1px solid var(--gm-line);border-radius:10px;padding:10px 14px;background:var(--gm-bg)}
+#grill-live .gm-link{border:0;background:none;padding:10px 0;text-decoration:underline;text-underline-offset:3px}
+#grill-live .gm-ledger{min-width:0;border-left:1px solid var(--gm-line);padding-left:20px}
+#grill-live .gm-node{border:0;border-bottom:1px solid var(--gm-line);background:none;display:block;width:100%;text-align:left;padding:12px 0}
+#grill-live .gm-assumptions{margin-top:20px}#grill-live ul{padding-left:20px}#grill-live li{margin:6px 0}
+#grill-live h3{font-size:14px;font-weight:500;margin:20px 0 6px}#grill-live .gm-status{margin-top:12px;font-size:12px;color:var(--gm-sub)}
+@media(max-width:580px){#grill-live[data-layout=board] .gm-layout{grid-template-columns:minmax(0,1fr)}#grill-live .gm-ledger{border-left:0;border-top:1px solid var(--gm-line);padding:18px 0 0}#grill-live header,#grill-live footer{padding:14px 16px}#grill-live .gm-session{padding:18px 16px 0}#grill-live .gm-layout{padding:20px 16px}#grill-live h2{font-size:22px}}
+</style>
+<div id="grill-live" data-layout="focus" role="region" aria-label="Grill Me interview">
+  <div class="gm-switch" aria-label="Interview view"><button type="button" class="gm-mode" data-mode="focus" aria-pressed="true">Focus</button><button type="button" class="gm-mode" data-mode="board" aria-pressed="false">Decision board</button></div>
+  <div class="gm-window">
+    <header><span class="gm-brand">grill me</span><span class="gm-note" id="gm-stage">Clarify → Review → Build</span></header>
+    <div class="gm-session"><div class="gm-eyebrow">Your goal</div><p class="gm-goal" id="gm-goal"></p><span class="gm-note" id="gm-progress"></span></div>
+    <div class="gm-layout">
+      <main>
+        <section id="gm-question-panel"><div class="gm-eyebrow" id="gm-topic"></div><h2 id="gm-question"></h2><p class="gm-why" id="gm-why"></p><div class="gm-options" id="gm-options"></div><label for="gm-answer">Your own answer, or a detail to add</label><textarea id="gm-answer" maxlength="6000" placeholder="What I actually need is…"></textarea><div class="gm-actions"><button type="button" class="gm-primary" id="gm-send" disabled>Use answer →</button><button type="button" class="gm-link" id="gm-defer">Decide later</button></div></section>
+        <section id="gm-review" hidden><div class="gm-eyebrow">Your decisions</div><h2>A brief you can build from.</h2><div id="gm-brief"></div><div class="gm-actions"><button type="button" class="gm-primary" id="gm-approve">Approve this brief and proceed</button></div></section>
+        <p class="gm-status" id="gm-status" role="status" aria-live="polite"></p>
+        <section id="gm-fallback" hidden><label for="gm-message">Send this answer in the current conversation</label><textarea id="gm-message" readonly></textarea><button type="button" class="gm-secondary" id="gm-copy">Copy message</button></section>
+      </main>
+      <aside class="gm-ledger" id="gm-ledger" aria-label="Decision board" hidden><span>The brief, taking shape</span><div id="gm-decisions"></div><div class="gm-assumptions" id="gm-assumptions"></div></aside>
+    </div>
+    <footer><span class="gm-note">Continues in this conversation</span><button type="button" class="gm-link" id="gm-review-request">Review draft brief</button></footer>
+  </div>
+</div>
+<script type="application/json" id="grill-state">__GRILL_STATE__</script>
+<script>
+(()=>{
+  'use strict';
+  const root=document.getElementById('grill-live'), $=s=>root.querySelector(s);
+  const packet=JSON.parse(document.getElementById('grill-state').textContent), s=packet.state;
+  let selected=null, pending=false;
+  const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+  function view(mode){root.dataset.layout=mode;$('#gm-ledger').hidden=mode!=='board';root.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));}
+  root.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.mode)));
+  const envelope=(action,extra={})=>({session:s.session,revision:s.revision,state_digest:packet.state_digest,action,...extra});
+  function status(message){$('#gm-status').textContent=message;}
+  function lock(value){pending=value;root.querySelectorAll('#gm-options button,#gm-defer,#gm-approve,#gm-review-request,.gm-node').forEach(b=>b.disabled=value);$('#gm-answer').disabled=value;updateSend();if(!packet.approvable)$('#gm-approve').disabled=true;}
+  function updateSend(){$('#gm-send').disabled=pending||(selected===null&&!$('#gm-answer').value.trim());}
+  function fallback(message,reason){$('#gm-message').value=message;$('#gm-fallback').hidden=false;status(reason+' Send the message in this chat to continue.');lock(false);}
+  async function send(event,title){
+    if(pending)return;
+    const message='Use the Grill Me workflow in this conversation. Apply this user action to the latest session state; reject stale revisions.\nGRILL_ME_EVENT\n'+JSON.stringify(event);
+    lock(true);status('Waiting for the conversation…');
+    if(typeof window.openai?.sendFollowUpMessage!=='function'){fallback(message,'This surface does not expose direct answer submission.');return;}
+    try{await window.openai.sendFollowUpMessage({prompt:message,title});status('Message handed to the host. Continue in the conversation; this question has not advanced locally.');}
+    catch(e){fallback(message,'No delivery confirmation was received. Check the conversation before resending.');}
+  }
+  $('#gm-goal').textContent=s.goal||'Clarify a plan before building.';
+  const count=s.decisions.filter(d=>d.status==='answered').length;
+  $('#gm-progress').textContent=`${count} of ${s.decisions.length} known decisions answered`;
+  s.decisions.forEach(d=>{const b=node('button',undefined,'gm-node');b.type='button';b.append(node('span',d.label),node('span',d.status==='answered'?d.answer:d.status==='deferred'?'Deferred': 'Open','gm-detail'));b.setAttribute('aria-label','Revise '+d.label);b.addEventListener('click',()=>send(envelope('edit',{question_id:d.id}),'Revisit '+d.label));$('#gm-decisions').append(b);});
+  const assumptions=$('#gm-assumptions');assumptions.append(node('h3','Assumptions'));
+  if(s.assumptions.length){const ul=node('ul');s.assumptions.forEach(a=>ul.append(node('li',a)));assumptions.append(ul);}else assumptions.append(node('p','None recorded yet.','gm-note'));
+  if(s.sources.length){assumptions.append(node('h3','Evidence'));s.sources.forEach(a=>assumptions.append(node('p',a,'gm-note')));}
+  if(s.phase==='interview'){
+    const q=s.question;$('#gm-topic').textContent=s.decisions.find(d=>d.id===q.id).label;$('#gm-question').textContent=q.title;$('#gm-why').textContent=q.why;
+    q.options.forEach((o,i)=>{const b=node('button',undefined,'gm-option');b.type='button';b.setAttribute('aria-pressed','false');b.append(node('span',o.label),node('span',o.detail||'','gm-detail'));b.addEventListener('click',()=>{selected=selected===i?null:i;Array.from($('#gm-options').children).forEach((v,j)=>v.setAttribute('aria-pressed',String(selected===j)));updateSend();});$('#gm-options').append(b);});
+    $('#gm-answer').addEventListener('input',updateSend);
+    $('#gm-send').addEventListener('click',()=>{const answer=[selected===null?'':q.options[selected].label,$('#gm-answer').value.trim()].filter(Boolean).join(' — ');if(answer.length>6000){status('Please shorten your answer to 6,000 characters.');return;}if(answer)send(envelope('answer',{question_id:q.id,answer}),'Use this answer');});
+    $('#gm-defer').addEventListener('click',()=>send(envelope('defer',{question_id:q.id}),'Leave this decision open'));
+  }else{
+    $('#gm-question-panel').hidden=true;$('#gm-review').hidden=false;
+    const brief=$('#gm-brief');brief.append(node('p',s.brief.outcome));
+    [['included','Included'],['excluded','Outside scope'],['checks','Success checks'],['unresolved','Open assumptions']].forEach(([key,label])=>{brief.append(node('h3',label));const ul=node('ul');(s.brief[key].length?s.brief[key]:['None recorded.']).forEach(t=>ul.append(node('li',t)));brief.append(ul);});
+    $('#gm-approve').disabled=!packet.approvable;$('#gm-approve').hidden=s.phase==='approved';
+    $('#gm-approve').addEventListener('click',()=>send(envelope('approve',{brief_digest:packet.brief_digest}),'Approve this scope and proceed'));
+    if(s.phase==='approved')status('This brief is approved. Implementation continues in the conversation.');
+    else if(!packet.approvable)status('Resolve blocking decisions before approving.');
+  }
+  $('#gm-review-request').addEventListener('click',()=>{
+    if(s.brief)send(envelope('review'),'Review the current brief');
+    else send(envelope('request_review'),'Prepare a draft brief');
+  });
+  $('#gm-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#gm-message').value);status('Copied. Send it in this conversation to continue.');}catch(e){$('#gm-message').focus();$('#gm-message').select();status('Select and copy the message, then send it in this chat.');}});
+  view(s.layout);
+})();
+</script>

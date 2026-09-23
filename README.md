@@ -1,9 +1,14 @@
 # Project Workflow
 
-Private development workspace for focused workflow skills and a reusable project-status dashboard.
+Project Workflow is a local Codex plugin with 18 focused `pw-*` skills. Each skill also works as a standard independently installable skill from its folder under `skills/`. The router is optional; direct invocation remains supported.
 
-Start with [PROJECT.md](PROJECT.md) for scope, decisions and current state. [PLAN.md](PLAN.md) records the implementation sequence; [RESEARCH.md](RESEARCH.md) preserves evidence and source references.
+The packaged skills are:
 
-Current drafts: Usage Gauge, Project Checkpoint, Prompt Cleanup, Execution Planner and Project Structure. A generalized dashboard template is in `templates/project-workflow-dashboard.html`, with Project Context fixture data in `templates/project-workflow-context.example.json` and QA notes in `validation/`. These are not installed releases. The usage ledger, representative skill validation and plugin packaging are pending.
+- `pw-router`, `pw-project-status`, `pw-messy-material`, `pw-usage-gauge`
+- `pw-execution-planner`, `pw-project-structure`, `pw-prompt-coach`, `pw-workflow-health`
+- `pw-project-checkpoint`, `pw-grill-me`, `pw-grill-with-docs`, `pw-to-spec`
+- `pw-handoff`, `pw-retro`, `pw-implement`, `pw-prototype`, `pw-wait-what`, `pw-dashboard`
 
-The `work/grill-me/` directory preserves the planning interview. Its HTML is an interview snapshot, not the final dashboard template. Backups are point-in-time snapshots unless a separate sync workflow is configured.
+The dashboard implementation and fixture live inside `skills/pw-dashboard/assets/`, so the dashboard skill remains usable when installed separately. `standalone/teach/` is intentionally outside the plugin.
+
+Start with [PROJECT.md](PROJECT.md) for current state and [docs/project-workflow-v1-accepted-blueprint.md](docs/project-workflow-v1-accepted-blueprint.md) for the accepted architecture. Third-party provenance and licensing are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
